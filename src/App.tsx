@@ -14,10 +14,12 @@ function App() {
   const [materialVar, setMaterial] = useState<string>("304SS");
 
   const [flangeSizeOp, setFlangeSize] = useState<number>(3);
+  const [phaseVar, setPhase] = useState<number>(1);
   const [immersionLengthVar, setImmersionLength] = useState<number>(10);
   const [foldLengthVar, setFoldLength] = useState<number>(5);
   const [thermoLength, setThermoLength] = useState<number>(8);
   const [elementNumVar, setElementNum] = useState<number>(1);
+  const [coldLength, setColdLength] = useState<number>(2.5);
 
   const drawingRef = useRef<HTMLDivElement>(null);
 
@@ -146,6 +148,19 @@ function App() {
         </div>
 
         <div>
+          <h1>Phase</h1>
+          <select
+            className="select select-xs border-cyan-500 border-2 text-gray-700 dark:text-gray-300"
+            onChange={(e) => {
+              setPhase(Number(e.target.value));
+            }}
+          >
+            <option value={1}>1PH</option>
+            <option value={3}>3PH</option>
+          </select>
+        </div>
+
+        <div>
           <h1>Immersion Length</h1>
           <input
             type="text"
@@ -211,6 +226,18 @@ function App() {
           </select>
         </div>
 
+
+        <div>
+          <h1>Cold Length</h1>
+          <input
+            type="text"
+            id="coldLengthInput"
+            value={coldLength}
+            onChange={(e) => setColdLength(Number(e.target.value) || 0)}
+            className="input input-bordered border-cyan-500 border-2 input-xs max-w-xs text-gray-700 dark:text-gray-300"
+          />
+        </div>
+        
         {elementNumVar === 1.5 && (
           <div>
             <h1>Foldback Length</h1>
@@ -384,6 +411,7 @@ function App() {
         serialNum={serialNum}
         title={titleVar}
         flangeSize={flangeSizeOp}
+        phase={phaseVar}
         lengthElement={immersionLengthVar}
         foldLength={foldLengthVar}
         elementNum={elementNumVar}
@@ -395,6 +423,7 @@ function App() {
         voltage={voltsVar}
         wattage={wattsVar}
         terminalBox={terminalBoxVar}
+        coldLength={coldLength}
       />
     </div>
   );

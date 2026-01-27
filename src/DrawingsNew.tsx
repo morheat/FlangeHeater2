@@ -40,6 +40,7 @@ interface drawingProps {
   serialNum: string;
   title: string;
   flangeSize: number;
+  phase: number;
   lengthElement: number;
   foldLength: number;
   elementNum: number;
@@ -51,6 +52,7 @@ interface drawingProps {
   voltage: string;
   wattage: string;
   terminalBox: string;
+  coldLength: number;
 }
 
 const Drawings10: React.FC<drawingProps> = ({
@@ -58,6 +60,7 @@ const Drawings10: React.FC<drawingProps> = ({
   serialNum,
   title,
   flangeSize,
+  phase,
   lengthElement,
   elementNum,
   material,
@@ -68,6 +71,7 @@ const Drawings10: React.FC<drawingProps> = ({
   hlSensor, // ✅ needed
   processTemp, // (optional later)
   thermoLength,
+  coldLength
 }) => {
   const showHL = hlSensor !== "nHL";
   const showProcess = processTemp !== "nT";
@@ -79,6 +83,10 @@ const Drawings10: React.FC<drawingProps> = ({
 
   // N7 vs N1/N4
   const isN7 = terminalBox === "N7";
+
+  // const TITLEBOX_H = 190;        // adjust this until the title block fits perfectly
+  // const DRAWING_Y_OFFSET = 0;    // negative = move drawing up, positive = move down
+
 
   // pick correct drawing
   const LayoutSVG = useMemo(() => {
@@ -626,17 +634,26 @@ const flangeLabel = useMemo(() => {
         title={title}
         material={material}
         voltage={voltage}
+        phase={phase}
         wattage={wattage}
         terminalBox={terminalBox}
         thermostat={typeThermostat}
+        elementNum={elementNum}
+        immersionLength={lengthElement}
+        coldLength={coldLength}
       />
+
 
       <div className="absolute w-[950px] flex items-center justify-center">
         <Titlebox className="absolute" />
         <LOGO className="absolute w-[16rem] ml-[650px] mt-[460px]" />
       </div>
 
-      <div className="h-full w-full flex items-center justify-center">
+      <div
+        className="h-full w-full flex items-center justify-center"
+        style={{ transform: "translateY(-60px)" }}
+      >
+
         {/* ✅ DO NOT gate on is10in — gate on whether a drawing exists */}
         {!LayoutSVG ? (
           <div className="text-slate-600 text-sm">
@@ -675,7 +692,7 @@ const flangeLabel = useMemo(() => {
                       bottom: overlayCfg.hlBar.bottom,
                       width: overlayCfg.hlBar.width,
                       height: overlayCfg.hlBar.height,
-                      backgroundColor: "#facc15",
+                      backgroundColor: "#fa1515",
                       border: "1px solid black",
                       zIndex: 60,
                     }}
@@ -765,6 +782,7 @@ const flangeLabel = useMemo(() => {
                         top: 5,
                         transform: "translateX(-50%)",
                         fontSize: "15px",
+                        fontWeight: "bold",
                         background: "white",
                         padding: "1px 6px",
                         color:"black"
@@ -783,7 +801,8 @@ const flangeLabel = useMemo(() => {
                         fontSize: "12px",
                         background: "white",
                         padding: "1px 6px",
-                        color:"black"
+                        color:"black",
+                        fontWeight: "bold",
                       }}
                     >
                       Thermowell
@@ -818,6 +837,7 @@ const flangeLabel = useMemo(() => {
                     top: overlayCfg.immersionText.top,
                     transform: "translate(-70%, -50%)",
                     fontSize: "16px",
+                    fontWeight: "bold",
                     background: "white",
                     padding: "2px 5px",
                     zIndex: 95,
@@ -860,9 +880,10 @@ const flangeLabel = useMemo(() => {
                             marginTop: overlayCfg.hlLeader.textOffsetY,
                             width: "220px",
                             transform: "rotate(-10deg)",
-                            fontSize: "16px",
+                            fontSize: "15px",
                             background: "white",
                             padding: "2px 6px",
+                            fontWeight: "bold",
                           }}
                         >
                           {hlSensor === "HLTC" && <>High-Limit Thermocouple</>}
