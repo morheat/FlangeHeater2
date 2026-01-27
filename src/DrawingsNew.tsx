@@ -166,14 +166,14 @@ const flangeLabel = useMemo(() => {
 
   //10in
   const cfg10N14 = {
-    processBar: { left: "57%", bottom: "48%", width: "18%", height: "1.8%" },
-    hlBar: { left: "57%", bottom: "25%", width: "26%", height: "1.5%" },
-
-    hlLeader: {left: "57%", bottom: "-24%", rotate: 10, lineHeight: 70, textOffsetY: 6},
+    processBar: { left: "57%", bottom: "45%", width: "18%", height: "4%" },
     
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    hlBar: { left: "57%", bottom: "25%", width: "26%", height: "2%" },
+    hlLeader: {left: "70%", bottom: "-5%", rotate: 10, lineHeight: 19, textOffsetY: 6},
+    
+    terminalBoxLeader: { left: "43%", bottom: "-18%", rotate: 25, lineHeight: 55, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "54.5%", bottom: "-23%", rotate: 0, lineHeight: 38, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
     elemMatLeader: { left: "86%", bottom: "-21%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -185,14 +185,14 @@ const flangeLabel = useMemo(() => {
 
   const cfg10N7 = {
     // ✅ change these independently for N7 (up/down = bottom, left/right = left)
-    processBar: { left: "53.5%", bottom: "46%", width: "18%", height: "1.8%" }, //Blue Bar
-    hlBar: { left: "53.5%", bottom: "19.5%", width: "26%", height: "1.5%" }, //yello Bar
+    processBar: { left: "53.5%", bottom: "44%", width: "18%", height: "4%" }, //Blue Bar
+    hlBar: { left: "53.5%", bottom: "19.5%", width: "26%", height: "2%" }, //yello Bar
 
-    hlLeader: { left: "58%", bottom: "-11%", rotate: 10, lineHeight: 40, textOffsetY: 0},
+    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0},
 
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "40%", bottom: "-11%", rotate: 25, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "51.5%", bottom: "-13%", rotate: 0, lineHeight: 29, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
     elemMatLeader: { left: "85%", bottom: "-12%", rotate: 10, lineHeight: 30, textOffsetY: 6, textWidth: 200 },
 
@@ -204,9 +204,9 @@ const flangeLabel = useMemo(() => {
 
   //3in
   const cfg3N14_E3 = {
-    processBar: { left: "53.25%", bottom: "44.5%", width: "18%", height: "1.8%" },
+    processBar: { left: "53.25%", bottom: "44.5%", width: "18%", height: "4%" },
     
-    hlBar: { left: "53.25%", bottom: "32.5%", width: "20%", height: "1.5%" },
+    hlBar: { left: "53.25%", bottom: "32.5%", width: "20%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-10%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
 
     terminalBoxLeader: { left: "40%", bottom: "-18%", rotate: 25, lineHeight: 45, textOffsetY: 6, textWidth: 220, textRotate:0 },
@@ -222,9 +222,9 @@ const flangeLabel = useMemo(() => {
   };
 
   const cfg3N14_E6 = {
-    processBar: { left: "52%", bottom: "47.5%", width: "18%", height: "1.8%" },
+    processBar: { left: "52%", bottom: "47%", width: "18%", height: "4%" },
     
-    hlBar: { left: "52%", bottom: "36%", width: "20%", height: "1.5%" },
+    hlBar: { left: "52%", bottom: "36%", width: "20%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-3%", rotate: 10, lineHeight: 60, textOffsetY: 0},
 
     terminalBoxLeader: { left: "38%", bottom: "-11%", rotate: 25, lineHeight: 45, textOffsetY: 6, textWidth: 220, textRotate:0 },
@@ -240,9 +240,9 @@ const flangeLabel = useMemo(() => {
   };
 
   const cfg3N7_E3 = {
-    processBar: { left: "52%", bottom: "47.5%", width: "18%", height: "1.8%" },
+    processBar: { left: "52%", bottom: "46%", width: "18%", height: "4%" },
     
-    hlBar: { left: "52%", bottom: "35%", width: "20%", height: "1.5%" },
+    hlBar: { left: "52%", bottom: "35%", width: "20%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-3%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
 
     terminalBoxLeader: { left: "36%", bottom: "-10%", rotate: 25, lineHeight: 35, textOffsetY: 6, textWidth: 220, textRotate:0 },
@@ -258,9 +258,9 @@ const flangeLabel = useMemo(() => {
   };
 
   const cfg3N7_E6 = {
-    processBar: { left: "56%", bottom: "47.5%", width: "18%", height: "1.8%" },
+    processBar: { left: "56%", bottom: "45%", width: "18%", height: "4%" },
     
-    hlBar: { left: "56%", bottom: "36%", width: "20%", height: "1.5%" },
+    hlBar: { left: "56%", bottom: "36%", width: "20%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-.5%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
 
     terminalBoxLeader: { left: "34%", bottom: "-10%", rotate: 25, lineHeight: 35, textOffsetY: 6, textWidth: 220, textRotate:0 },
@@ -277,16 +277,16 @@ const flangeLabel = useMemo(() => {
 
   //4 inches
   const cfg4N7_E6 = {
-    processBar: { left: "60.25%", bottom: "47.5%", width: "15%", height: "1.8%" },
+    processBar: { left: "60.25%", bottom: "46%", width: "15%", height: "4%" },
     
-    hlBar: { left: "60.25%", bottom: "36%", width: "20%", height: "1.5%" },
-    hlLeader: { left: "65%", bottom: "-12%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlBar: { left: "60.25%", bottom: "36%", width: "20%", height: "2%" },
+    hlLeader: { left: "70%", bottom: "-12%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
 
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "44%", bottom: "-8%", rotate: 0, lineHeight: 22, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "58%", bottom: "-25%", rotate: 0, lineHeight: 30, textOffsetY: 6, textWidth: 220, textRotate:0 },
     
-    elemMatLeader: { left: "85%", bottom: "-16%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
+    elemMatLeader: { left: "85%", bottom: "-5%", rotate: 10, lineHeight: 30, textOffsetY: 6, textWidth: 200 },
 
     immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
     immersionText: { left: "78%", top: "28%" },
@@ -295,16 +295,16 @@ const flangeLabel = useMemo(() => {
   };
 
   const cfg4N7_E9 = {
-    processBar: { left: "60%", bottom: "46%", width: "15%", height: "1.8%" },
+    processBar: { left: "60%", bottom: "44%", width: "15%", height: "4%" },
     
-    hlBar: { left: "60%", bottom: "32%", width: "20%", height: "1.5%" },
-    hlLeader: { left: "60%", bottom: "-12.5%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlBar: { left: "60%", bottom: "32%", width: "20%", height: "2%" },
+    hlLeader: { left: "70%", bottom: "-15%", rotate: 10, lineHeight: 65, textOffsetY: 0,},
 
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "43%", bottom: "-7%", rotate: 0, lineHeight: 22, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "58%", bottom: "-23%", rotate: 0, lineHeight: 30, textOffsetY: 6, textWidth: 220, textRotate:0 },
     
-    elemMatLeader: { left: "85%", bottom: "-16%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
+    elemMatLeader: { left: "85%", bottom: "-7%", rotate: 10, lineHeight: 30, textOffsetY: 6, textWidth: 200 },
 
     immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
     immersionText: { left: "78%", top: "30%" },
@@ -313,14 +313,14 @@ const flangeLabel = useMemo(() => {
   };
 
   const cfg4N14_E6 = {
-    processBar: { left: "53%", bottom: "46%", width: "18%", height: "1.8%" },
+    processBar: { left: "53%", bottom: "45%", width: "18%", height: "4%" },
     
-    hlBar: { left: "53%", bottom: "34%", width: "20%", height: "1.5%" },
-    hlLeader: { left: "60%", bottom: "-8%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlBar: { left: "53%", bottom: "34%", width: "20%", height: "2%" },
+    hlLeader: { left: "65%", bottom: "-8%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
 
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "40%", bottom: "-8%", rotate: 10, lineHeight: 35, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "50.5%", bottom: "-20%", rotate: 0, lineHeight: 32, textOffsetY: 6, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-11.5%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -331,14 +331,14 @@ const flangeLabel = useMemo(() => {
   };
 
   const cfg4N14_E9 = {
-    processBar: { left: "52.75%", bottom: "43%", width: "18%", height: "1.8%" },
+    processBar: { left: "52.75%", bottom: "42%", width: "18%", height: "4%" },
     
-    hlBar: { left: "52.75%", bottom: "30%", width: "20%", height: "1.5%" },
-    hlLeader: { left: "60%", bottom: "-7%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlBar: { left: "52.75%", bottom: "30%", width: "20%", height: "2%" },
+    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
 
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "40%", bottom: "-3%", rotate: 10, lineHeight: 35, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "50.5%", bottom: "-14%", rotate: 0, lineHeight: 32, textOffsetY: 6, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-10%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -350,14 +350,14 @@ const flangeLabel = useMemo(() => {
 
   // 5 inches
   const cfg5N1 = {
-    processBar: { left: "53.5%", bottom: "44%", width: "18%", height: "1.8%" },
+    processBar: { left: "53.5%", bottom: "43%", width: "18%", height: "4%" },
     
-    hlBar: { left: "53.5%", bottom: "33%", width: "20%", height: "1.5%" },
-    hlLeader: { left: "60%", bottom: "-6%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlBar: { left: "53.5%", bottom: "33%", width: "20%", height: "2%" },
+    hlLeader: { left: "65%", bottom: "-6%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
 
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "40%", bottom: "-8%", rotate: 25, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "51%", bottom: "-14%", rotate: 0, lineHeight: 24, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-9%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -368,14 +368,14 @@ const flangeLabel = useMemo(() => {
   };
 
   const cfg5N4 = {
-    processBar: { left: "53%", bottom: "44%", width: "18%", height: "1.8%" },
+    processBar: { left: "53%", bottom: "43%", width: "18%", height: "4%" },
     
-    hlBar: { left: "53%", bottom: "34%", width: "20%", height: "1.5%" },
-    hlLeader: { left: "60%", bottom: "1.5%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlBar: { left: "53%", bottom: "34%", width: "20%", height: "2%" },
+    hlLeader: { left: "65%", bottom: "1.5%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
 
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "38%", bottom: "1%", rotate: 25, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "50.5%", bottom: "-5%", rotate: 0, lineHeight: 24, textOffsetY: 0, textWidth: 220, textRotate:0 },
    
     elemMatLeader: { left: "85%", bottom: "-1%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -386,16 +386,16 @@ const flangeLabel = useMemo(() => {
   };
 
   const cfg5N7 = {
-    processBar: { left: "62.5%", bottom: "47.5%", width: "15%", height: "1.8%" },
+    processBar: { left: "62.5%", bottom: "47%", width: "15%", height: "4%" },
     
-    hlBar: { left: "62.5%", bottom: "38%", width: "20%", height: "1.5%" },
-    hlLeader: { left: "65%", bottom: "-3%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlBar: { left: "62.5%", bottom: "38%", width: "20%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-6%", rotate: 10, lineHeight: 70, textOffsetY: 0,},
 
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "45%", bottom: "-1%", rotate: 0, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220 , textRotate:0},
+    flangeLeader: { left: "60.5%", bottom: "-18%", rotate: 0, lineHeight: 35, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
-    elemMatLeader: { left: "88%", bottom: "-6%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
+    elemMatLeader: { left: "88%", bottom: "3%", rotate: 10, lineHeight: 30, textOffsetY: 6, textWidth: 200 },
 
     immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
     immersionText: { left: "80%", top: "30%" },
@@ -406,14 +406,14 @@ const flangeLabel = useMemo(() => {
 
   // 6 inches
   const cfg6N1 = {
-    processBar: { left: "54.25%", bottom: "44%", width: "18%", height: "1.8%" },
+    processBar: { left: "54.25%", bottom: "42%", width: "18%", height: "4%" },
     
-    hlBar: { left: "54.25%", bottom: "20%", width: "20%", height: "1.5%" },
-    hlLeader: { left: "60%", bottom: "-24%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlBar: { left: "54.25%", bottom: "20%", width: "20%", height: "2%" },
+    hlLeader: { left: "65%", bottom: "-10%", rotate: 10, lineHeight: 22, textOffsetY: 0,},
 
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "40%", bottom: "-15%", rotate: 25, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "52%", bottom: "-21%", rotate: 0, lineHeight: 24, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-28%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -424,14 +424,14 @@ const flangeLabel = useMemo(() => {
   };
 
   const cfg6N4 = {
-    processBar: { left: "53.75%", bottom: "46%", width: "18%", height: "1.8%" },
+    processBar: { left: "53.75%", bottom: "46%", width: "18%", height: "4%" },
     
-    hlBar: { left: "53.75%", bottom: "24%", width: "20%", height: "1.5%" },
-    hlLeader: { left: "60%", bottom: "-21%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlBar: { left: "53.75%", bottom: "24%", width: "20%", height: "2%" },
+    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 25, textOffsetY: 0,},
 
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "40%", bottom: "-11%", rotate: 25, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "51.5%", bottom: "-17%", rotate: 0, lineHeight: 24, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-25%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -442,16 +442,16 @@ const flangeLabel = useMemo(() => {
   };
 
   const cfg6N7 = {
-    processBar: { left: "58.75%", bottom: "49%", width: "18%", height: "1.8%" },
+    processBar: { left: "58.75%", bottom: "47%", width: "18%", height: "4%" },
     
-    hlBar: { left: "58.75%", bottom: "27%", width: "20%", height: "1.5%" },
-    hlLeader: { left: "60%", bottom: "-8%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlBar: { left: "58.75%", bottom: "27%", width: "20%", height: "2%" },
+    hlLeader: { left: "70%", bottom: "-5%", rotate: 10, lineHeight: 50, textOffsetY: 0,},
 
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "45%", bottom: "3%", rotate: 0, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "56.5%", bottom: "-11%", rotate: 0, lineHeight: 35, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
-    elemMatLeader: { left: "85%", bottom: "-11%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
+    elemMatLeader: { left: "85%", bottom: "2%", rotate: 10, lineHeight: 15, textOffsetY: 6, textWidth: 200 },
 
     immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
     immersionText: { left: "77%", top: "1%" },
@@ -462,14 +462,14 @@ const flangeLabel = useMemo(() => {
 
   // 8 inches
   const cfg8N1 = {
-    processBar: { left: "54%", bottom: "47%", width: "18%", height: "1.8%" },
+    processBar: { left: "54%", bottom: "47%", width: "18%", height: "4%" },
     
-    hlBar: { left: "54%", bottom: "26%", width: "20%", height: "1.5%" },
-    hlLeader: { left: "60%", bottom: "-15%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlBar: { left: "54%", bottom: "26%", width: "20%", height: "2%" },
+    hlLeader: { left: "65%", bottom: "-15%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
 
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "40%", bottom: "-15%", rotate: 25, lineHeight: 55, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "51.5%", bottom: "-21%", rotate: 0, lineHeight: 45, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-18%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -480,14 +480,14 @@ const flangeLabel = useMemo(() => {
   };
 
   const cfg8N4 = {
-    processBar: { left: "52.25%", bottom: "44%", width: "18%", height: "1.8%" },
+    processBar: { left: "52.25%", bottom: "43%", width: "18%", height: "4%" },
     
-    hlBar: { left: "52.25%", bottom: "24%", width: "20%", height: "1.5%" },
-    hlLeader: { left: "60%", bottom: "-15%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlBar: { left: "52.25%", bottom: "24%", width: "20%", height: "2%" },
+    hlLeader: { left: "65%", bottom: "-12%", rotate: 10, lineHeight: 50, textOffsetY: 0,},
 
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "40%", bottom: "-15%", rotate: 25, lineHeight: 55, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "50%", bottom: "-18%", rotate: 0, lineHeight: 40, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-18%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -498,14 +498,14 @@ const flangeLabel = useMemo(() => {
   };
 
   const cfg8N7 = {
-    processBar: { left: "49.75%", bottom: "42%", width: "18%", height: "1.8%" },
+    processBar: { left: "49.75%", bottom: "41%", width: "18%", height: "4%" },
     
-    hlBar: { left: "49.75%", bottom: "19%", width: "20%", height: "1.5%" },
-    hlLeader: { left: "55%", bottom: "-18%", rotate: 10, lineHeight: 50, textOffsetY: 0,},
+    hlBar: { left: "49.75%", bottom: "19%", width: "20%", height: "2%" },
+    hlLeader: { left: "60%", bottom: "-11%", rotate: 10, lineHeight: 30, textOffsetY: 0,},
 
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "35%", bottom: "-10%", rotate: 0, lineHeight: 45, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "48%", bottom: "-18%", rotate: 0, lineHeight: 20, textOffsetY: 6, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-19%", rotate: 10, lineHeight: 40, textOffsetY: 6, textWidth: 200 },
 
@@ -518,14 +518,14 @@ const flangeLabel = useMemo(() => {
 
   // 12 inches
   const cfg12N1 = {
-    processBar: { left: "55.25%", bottom: "50%", width: "18%", height: "1.8%" },
+    processBar: { left: "55.25%", bottom: "48%", width: "18%", height: "4%" },
     
-    hlBar: { left: "55.25%", bottom: "30%", width: "20%", height: "1.5%" },
-    hlLeader: { left: "60%", bottom: "-12%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlBar: { left: "55.25%", bottom: "30%", width: "20%", height: "2%" },
+    hlLeader: { left: "65%", bottom: "-12%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
 
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "43%", bottom: "-15%", rotate: 25, lineHeight: 64, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "53%", bottom: "-18%", rotate: 0, lineHeight: 47, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-15%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -536,14 +536,14 @@ const flangeLabel = useMemo(() => {
   };
 
   const cfg12N4 = {
-    processBar: { left: "55.5%", bottom: "50%", width: "18%", height: "1.8%" },
+    processBar: { left: "55.5%", bottom: "49%", width: "18%", height: "4%" },
     
-    hlBar: { left: "55.5%", bottom: "30%", width: "20%", height: "1.5%" },
-    hlLeader: { left: "60%", bottom: "-15%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlBar: { left: "55.5%", bottom: "30%", width: "20%", height: "2%" },
+    hlLeader: { left: "65%", bottom: "-13%", rotate: 10, lineHeight: 55, textOffsetY: 0,},
 
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "43%", bottom: "-15%", rotate: 25, lineHeight: 55, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "53%", bottom: "-20%", rotate: 0, lineHeight: 47, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-18%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -554,14 +554,14 @@ const flangeLabel = useMemo(() => {
   };
 
   const cfg12N7 = {
-    processBar: { left: "52.25%", bottom: "49%", width: "18%", height: "1.8%" },
+    processBar: { left: "52.25%", bottom: "48%", width: "18%", height: "4%" },
     
-    hlBar: { left: "52.25%", bottom: "22%", width: "20%", height: "1.5%" },
-    hlLeader: { left: "60%", bottom: "-21%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlBar: { left: "52.25%", bottom: "22%", width: "20%", height: "2%" },
+    hlLeader: { left: "65%", bottom: "-15%", rotate: 10, lineHeight: 45, textOffsetY: 0,},
 
-    terminalBoxLeader: { left: "18%", bottom: "-8%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "38%", bottom: "-5%", rotate: 0, lineHeight: 60, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "34%", bottom: "-14%", rotate: 0, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "50.5%", bottom: "-23%", rotate: 0, lineHeight: 45, textOffsetY: 6, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-24%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 

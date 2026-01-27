@@ -188,8 +188,8 @@ function App() {
             {flangeSizeOp === 8 && (
               <>
                 <option value={21}>21 Elements</option>
-                <option value={21}>24 Elements</option>
-                <option value={21}>27 Elements</option>
+                <option value={24}>24 Elements</option>
+                <option value={27}>27 Elements</option>
               </>
             )}
                         
@@ -204,8 +204,8 @@ function App() {
             {flangeSizeOp === 12 && (
               <>
                 <option value={48}>48 Elements</option>
-                <option value={48}>54 Elements</option>
-                <option value={48}>60 Elements</option>
+                <option value={54}>54 Elements</option>
+                <option value={60}>60 Elements</option>
               </>
             )}
           </select>
