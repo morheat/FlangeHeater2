@@ -15,11 +15,13 @@ function App() {
 
   const [flangeSizeOp, setFlangeSize] = useState<number>(3);
   const [phaseVar, setPhase] = useState<number>(1);
-  const [immersionLengthVar, setImmersionLength] = useState<number>(10);
+  const [immersionLengthVar, setImmersionLength] = useState<number>(25);
   const [foldLengthVar, setFoldLength] = useState<number>(5);
-  const [thermoLength, setThermoLength] = useState<number>(8);
+  const [thermoLength, setThermoLength] = useState<number>(10);
   const [elementNumVar, setElementNum] = useState<number>(1);
   const [coldLength, setColdLength] = useState<number>(2.5);
+  const [hlLength, setHlLength] = useState<number>(10); // pick whatever default you want
+
 
   const drawingRef = useRef<HTMLDivElement>(null);
 
@@ -313,18 +315,43 @@ function App() {
           </div>
         )}
 
-        {processSensor !== "nT" && (
+
+        {(processSensor !== "nT" || HLSensor !== "nHL") && (
           <div>
-            <h1>Thermowell Length</h1>
-            <input
-              type="text"
-              id="psLength"
-              defaultValue={8}
-              onChange={(e) => setThermoLength(Number(e.target.value) || 0)}
-              className="input input-bordered border-cyan-500 border-2 input-xs max-w-xs text-gray-700 dark:text-gray-300"
-            />
+            <h1>Sensor Lengths</h1>
+
+            <div className="flex space-x-3">
+              {/* Thermowell Length (Process) */}
+              {processSensor !== "nT" && (
+                <div className="flex-1">
+                  <h1>Thermowell Length</h1>
+                  <input
+                    type="text"
+                    id="psLength"
+                    value={thermoLength}
+                    onChange={(e) => setThermoLength(Number(e.target.value) || 0)}
+                    className="input input-bordered border-cyan-500 border-2 input-xs w-full text-gray-700 dark:text-gray-300"
+                  />
+                </div>
+              )}
+
+              {/* HL Length */}
+              {HLSensor !== "nHL" && (
+                <div className="flex-1">
+                  <h1>HL Length</h1>
+                  <input
+                    type="text"
+                    id="hlLength"
+                    value={hlLength}
+                    onChange={(e) => setHlLength(Number(e.target.value) || 0)}
+                    className="input input-bordered border-cyan-500 border-2 input-xs w-full text-gray-700 dark:text-gray-300"
+                  />
+                </div>
+              )}
+            </div>
           </div>
         )}
+
 
         <div>
           <h1>Terminal Box</h1>
@@ -417,6 +444,7 @@ function App() {
         elementNum={elementNumVar}
         processTemp={processSensor}
         hlSensor={HLSensor}
+        hlLength={hlLength}
         typeThermostat={processTStat}
         thermoLength={thermoLength}
         material={materialVar}

@@ -48,6 +48,7 @@ interface drawingProps {
   hlSensor: string;
   typeThermostat: string;
   thermoLength: number;
+  hlLength: number;
   material: string;
   voltage: string;
   wattage: string;
@@ -69,6 +70,7 @@ const Drawings10: React.FC<drawingProps> = ({
   terminalBox,
   typeThermostat,
   hlSensor, // ✅ needed
+  hlLength,
   processTemp, // (optional later)
   thermoLength,
   coldLength
@@ -76,6 +78,7 @@ const Drawings10: React.FC<drawingProps> = ({
   const showHL = hlSensor !== "nHL";
   const showProcess = processTemp !== "nT";
   const elementNumN = Number(elementNum);
+  const showColdDim = coldLength > 0;
 
   // Only enable 10-inch for now
   // ❌ DON'T gate the UI with this anymore if you want 3-inch too
@@ -153,6 +156,7 @@ const Drawings10: React.FC<drawingProps> = ({
   }, [lengthElement]);
 
   const showThermowellDim = processTemp !== "nT" && thermoLength > 0;
+  const showHLDim = hlSensor !== "nHL" && hlLength > 0;
 
 // --- label text helpers ---
 const terminalBoxLabel = useMemo(() => {
@@ -167,6 +171,13 @@ const flangeLabel = useMemo(() => {
   return `${flangeSize}" 150# Flange`;
 }, [flangeSize]);
 
+const hlDimLabel = useMemo(() => {
+  if (hlSensor === "HLTC") return "High-Limit Thermocouple";
+  if (hlSensor === "HLTS") return "High-Limit Thermostat";
+  return "High-Limit";
+}, [hlSensor]);
+
+
 
   // =========================
   // CONFIGS 
@@ -176,31 +187,35 @@ const flangeLabel = useMemo(() => {
   const cfg10N14 = {
     processBar: { left: "57%", bottom: "45%", width: "18%", height: "4%" },
     
-    hlBar: { left: "57%", bottom: "25%", width: "26%", height: "2%" },
+    hlBar: { left: "57%", bottom: "25%", width: "18%", height: "2%" },
     hlLeader: {left: "70%", bottom: "-5%", rotate: 10, lineHeight: 19, textOffsetY: 6},
+    hlDim: { left: "57%", bottom: "-35%", width: "18%", dropHeight: 125 },
     
     terminalBoxLeader: { left: "43%", bottom: "-18%", rotate: 25, lineHeight: 55, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "54.5%", bottom: "-23%", rotate: 0, lineHeight: 38, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "54.5%", bottom: "-45%", rotate: 0, lineHeight: 95, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
     elemMatLeader: { left: "86%", bottom: "-21%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
     immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
     immersionText: { left: "78%", top: "7%" },
 
-    thermoDim: { left: "57%", bottom: "58%", width: "18%", dropHeight: 25 },
+    thermoDim: { left: "57%", bottom: "56%", width: "18%", dropHeight: 25 },
+
+    coldDim: { left: "57%", bottom: "-8%", width: "5%", riseHeight: 62 },
   };
 
   const cfg10N7 = {
     // ✅ change these independently for N7 (up/down = bottom, left/right = left)
     processBar: { left: "53.5%", bottom: "44%", width: "18%", height: "4%" }, //Blue Bar
-    hlBar: { left: "53.5%", bottom: "19.5%", width: "26%", height: "2%" }, //yello Bar
+    hlBar: { left: "53.5%", bottom: "19.5%", width: "18%", height: "2%" }, //yello Bar
+    hlDim: { left: "53.5%", bottom: "-25%", width: "18%", dropHeight: 105 },
 
     hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0},
 
     terminalBoxLeader: { left: "40%", bottom: "-11%", rotate: 25, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "51.5%", bottom: "-13%", rotate: 0, lineHeight: 29, textOffsetY: 0, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "51.5%", bottom: "-32%", rotate: 0, lineHeight: 88, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
     elemMatLeader: { left: "85%", bottom: "-12%", rotate: 10, lineHeight: 30, textOffsetY: 6, textWidth: 200 },
 
@@ -208,18 +223,21 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "78%", top: "17%" }, //Length text
 
     thermoDim: { left: "53.5%", bottom: "60%", width: "18%", dropHeight: 70 },
+
+    coldDim: { left: "53.5%", bottom: "-9%", width: "5%", riseHeight: 62 },
   };
 
   //3in
   const cfg3N14_E3 = {
     processBar: { left: "53.25%", bottom: "44.5%", width: "18%", height: "4%" },
     
-    hlBar: { left: "53.25%", bottom: "32.5%", width: "20%", height: "2%" },
+    hlBar: { left: "53.25%", bottom: "32.5%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-10%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlDim: { left: "53.25%", bottom: "-35%", width: "18%", dropHeight: 150 },
 
     terminalBoxLeader: { left: "40%", bottom: "-18%", rotate: 25, lineHeight: 45, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "51%", bottom: "-20%", rotate: 0, lineHeight:   20, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "51%", bottom: "-45%", rotate: 0, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-13%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -227,17 +245,20 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "75%", top: "25%" },
 
     thermoDim: { left: "53.25%", bottom: "46%", width: "18%", dropHeight: 80 },
+
+    coldDim: { left: "53.25%", bottom: "-0%", width: "5%", riseHeight: 62 },
   };
 
   const cfg3N14_E6 = {
     processBar: { left: "52%", bottom: "47%", width: "18%", height: "4%" },
     
-    hlBar: { left: "52%", bottom: "36%", width: "20%", height: "2%" },
+    hlBar: { left: "52%", bottom: "36%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-3%", rotate: 10, lineHeight: 60, textOffsetY: 0},
+    hlDim: { left: "52%", bottom: "-28%", width: "18%", dropHeight: 155 },
 
     terminalBoxLeader: { left: "38%", bottom: "-11%", rotate: 25, lineHeight: 45, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "49.5%", bottom: "-12%", rotate: 0, lineHeight:   20, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "49.5%", bottom: "-35%", rotate: 0, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-5%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -245,17 +266,20 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "74%", top: "25%" },
 
     thermoDim: { left: "52%", bottom: "46%", width: "18%", dropHeight: 80 },
+
+    coldDim: { left: "52%", bottom: "6%", width: "5%", riseHeight: 62 },
   };
 
   const cfg3N7_E3 = {
     processBar: { left: "52%", bottom: "46%", width: "18%", height: "4%" },
     
-    hlBar: { left: "52%", bottom: "35%", width: "20%", height: "2%" },
+    hlBar: { left: "52%", bottom: "35%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-3%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlDim: { left: "52%", bottom: "-25%", width: "18%", dropHeight: 150 },
 
     terminalBoxLeader: { left: "36%", bottom: "-10%", rotate: 25, lineHeight: 35, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "49.5%", bottom: "-11%", rotate: 0, lineHeight:   20, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "49.5%", bottom: "-32%", rotate: 0, lineHeight: 85, textOffsetY: 6, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-5%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -263,17 +287,20 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "74%", top: "25%" },
 
     thermoDim: { left: "52%", bottom: "46%", width: "18%", dropHeight: 80 },
+
+    coldDim: { left: "52%", bottom: "6%", width: "5%", riseHeight: 62 },
   };
 
   const cfg3N7_E6 = {
     processBar: { left: "56%", bottom: "45%", width: "18%", height: "4%" },
     
-    hlBar: { left: "56%", bottom: "36%", width: "20%", height: "2%" },
+    hlBar: { left: "56%", bottom: "36%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-.5%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlDim: { left: "56%", bottom: "-25%", width: "18%", dropHeight: 160 },
 
     terminalBoxLeader: { left: "34%", bottom: "-10%", rotate: 25, lineHeight: 35, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "53.5%", bottom: "-11%", rotate: 0, lineHeight:40, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "53.5%", bottom: "-32%", rotate: 0, lineHeight:105, textOffsetY: 6, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-3%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -281,18 +308,21 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "78%", top: "32%" },
 
     thermoDim: { left: "56%", bottom: "46%", width: "18%", dropHeight: 80 },
+
+    coldDim: { left: "56%", bottom: "8%", width: "5%", riseHeight: 62 },
   };
 
   //4 inches
   const cfg4N7_E6 = {
     processBar: { left: "60.25%", bottom: "46%", width: "15%", height: "4%" },
     
-    hlBar: { left: "60.25%", bottom: "36%", width: "20%", height: "2%" },
+    hlBar: { left: "60.25%", bottom: "36%", width: "15%", height: "2%" },
     hlLeader: { left: "70%", bottom: "-12%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlDim: { left: "60.25%", bottom: "-48%", width: "15%", dropHeight: 170 },
 
     terminalBoxLeader: { left: "44%", bottom: "-8%", rotate: 0, lineHeight: 22, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "58%", bottom: "-25%", rotate: 0, lineHeight: 30, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "58%", bottom: "-57%", rotate: 0, lineHeight: 105, textOffsetY: 6, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-5%", rotate: 10, lineHeight: 30, textOffsetY: 6, textWidth: 200 },
 
@@ -300,17 +330,20 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "78%", top: "28%" },
 
     thermoDim: { left: "60.25%", bottom: "46%", width: "15%", dropHeight: 80 },
+
+    coldDim: { left: "60.25%", bottom: "-1%", width: "5%", riseHeight: 62 },
   };
 
   const cfg4N7_E9 = {
     processBar: { left: "60%", bottom: "44%", width: "15%", height: "4%" },
     
-    hlBar: { left: "60%", bottom: "32%", width: "20%", height: "2%" },
+    hlBar: { left: "60%", bottom: "32%", width: "15%", height: "2%" },
     hlLeader: { left: "70%", bottom: "-15%", rotate: 10, lineHeight: 65, textOffsetY: 0,},
+    hlDim: { left: "60%", bottom: "-40%", width: "15%", dropHeight: 150 },
 
     terminalBoxLeader: { left: "43%", bottom: "-7%", rotate: 0, lineHeight: 22, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "58%", bottom: "-23%", rotate: 0, lineHeight: 30, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "58%", bottom: "-50%", rotate: 0, lineHeight: 100, textOffsetY: 6, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-7%", rotate: 10, lineHeight: 30, textOffsetY: 6, textWidth: 200 },
 
@@ -318,17 +351,20 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "78%", top: "30%" },
 
     thermoDim: { left: "60%", bottom: "46%", width: "15%", dropHeight: 80 },
+
+    coldDim: { left: "60%", bottom: "-2%", width: "5%", riseHeight: 62 },
   };
 
   const cfg4N14_E6 = {
     processBar: { left: "53%", bottom: "45%", width: "18%", height: "4%" },
     
-    hlBar: { left: "53%", bottom: "34%", width: "20%", height: "2%" },
+    hlBar: { left: "53%", bottom: "34%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-8%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlDim: { left: "53%", bottom: "-38%", width: "18%", dropHeight: 160 },
 
-    terminalBoxLeader: { left: "40%", bottom: "-8%", rotate: 10, lineHeight: 35, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "38%", bottom: "-8%", rotate: 10, lineHeight: 35, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "50.5%", bottom: "-20%", rotate: 0, lineHeight: 32, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "50.5%", bottom: "-45%", rotate: 0, lineHeight: 98, textOffsetY: 6, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-11.5%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -336,17 +372,20 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "74%", top: "12%" },
 
     thermoDim: { left: "53%", bottom: "46%", width: "18%", dropHeight: 35 },
+
+    coldDim: { left: "53%", bottom: "1%", width: "5%", riseHeight: 62 },
   };
 
   const cfg4N14_E9 = {
     processBar: { left: "52.75%", bottom: "42%", width: "18%", height: "4%" },
     
-    hlBar: { left: "52.75%", bottom: "30%", width: "20%", height: "2%" },
+    hlBar: { left: "52.75%", bottom: "30%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlDim: { left: "52.75%", bottom: "-25%", width: "18%", dropHeight: 140 },
 
-    terminalBoxLeader: { left: "40%", bottom: "-3%", rotate: 10, lineHeight: 35, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "38%", bottom: "-3%", rotate: 10, lineHeight: 35, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "50.5%", bottom: "-14%", rotate: 0, lineHeight: 32, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "50.5%", bottom: "-33%", rotate: 0, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-10%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -354,18 +393,21 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "73.5%", top: "20%" },
 
     thermoDim: { left: "52.75%", bottom: "47%", width: "18%", dropHeight: 30 },
+
+    coldDim: { left: "52.75%", bottom: "1%", width: "5%", riseHeight: 62 },
   };
 
   // 5 inches
   const cfg5N1 = {
     processBar: { left: "53.5%", bottom: "43%", width: "18%", height: "4%" },
     
-    hlBar: { left: "53.5%", bottom: "33%", width: "20%", height: "2%" },
+    hlBar: { left: "53.5%", bottom: "33%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-6%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlDim: { left: "53.5%", bottom: "-28%", width: "18%", dropHeight: 145 },
 
-    terminalBoxLeader: { left: "40%", bottom: "-8%", rotate: 25, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "38%", bottom: "-8%", rotate: 25, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "51%", bottom: "-14%", rotate: 0, lineHeight: 24, textOffsetY: 0, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "51%", bottom: "-35%", rotate: 0, lineHeight: 85, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-9%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -373,17 +415,20 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "75%", top: "15%" },
 
     thermoDim: { left: "53.5%", bottom: "46%", width: "18%", dropHeight: 45 },
+
+    coldDim: { left: "53.5%", bottom: "3%", width: "5%", riseHeight: 62 },
   };
 
   const cfg5N4 = {
     processBar: { left: "53%", bottom: "43%", width: "18%", height: "4%" },
     
-    hlBar: { left: "53%", bottom: "34%", width: "20%", height: "2%" },
+    hlBar: { left: "53%", bottom: "34%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "1.5%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlDim: { left: "53%", bottom: "-15%", width: "18%", dropHeight: 140 },
 
     terminalBoxLeader: { left: "38%", bottom: "1%", rotate: 25, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "50.5%", bottom: "-5%", rotate: 0, lineHeight: 24, textOffsetY: 0, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "50.5%", bottom: "-22%", rotate: 0, lineHeight: 85, textOffsetY: 0, textWidth: 220, textRotate:0 },
    
     elemMatLeader: { left: "85%", bottom: "-1%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -391,17 +436,20 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "75%", top: "21.5%" },
 
     thermoDim: { left: "53%", bottom: "45%", width: "18%", dropHeight: 45 },
+
+    coldDim: { left: "53%", bottom: "9%", width: "5%", riseHeight: 62 },
   };
 
   const cfg5N7 = {
     processBar: { left: "62.5%", bottom: "47%", width: "15%", height: "4%" },
     
-    hlBar: { left: "62.5%", bottom: "38%", width: "20%", height: "2%" },
+    hlBar: { left: "62.5%", bottom: "38%", width: "15%", height: "2%" },
     hlLeader: { left: "72%", bottom: "-6%", rotate: 10, lineHeight: 70, textOffsetY: 0,},
+    hlDim: { left: "62.5%", bottom: "-30%", width: "15%", dropHeight: 160 },
 
     terminalBoxLeader: { left: "45%", bottom: "-1%", rotate: 0, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "60.5%", bottom: "-18%", rotate: 0, lineHeight: 35, textOffsetY: 0, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "60.5%", bottom: "-40%", rotate: 0, lineHeight: 96, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "88%", bottom: "3%", rotate: 10, lineHeight: 30, textOffsetY: 6, textWidth: 200 },
 
@@ -409,6 +457,8 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "80%", top: "30%" },
 
     thermoDim: { left: "62.5%", bottom: "46%", width: "15%", dropHeight: 80 },
+
+    coldDim: { left: "62.5%", bottom: "7%", width: "5%", riseHeight: 62 },
   };
 
 
@@ -416,12 +466,13 @@ const flangeLabel = useMemo(() => {
   const cfg6N1 = {
     processBar: { left: "54.25%", bottom: "42%", width: "18%", height: "4%" },
     
-    hlBar: { left: "54.25%", bottom: "20%", width: "20%", height: "2%" },
+    hlBar: { left: "54.25%", bottom: "20%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-10%", rotate: 10, lineHeight: 22, textOffsetY: 0,},
+    hlDim: { left: "54.25%", bottom: "-42%", width: "18%", dropHeight: 130 },
 
     terminalBoxLeader: { left: "40%", bottom: "-15%", rotate: 25, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "52%", bottom: "-21%", rotate: 0, lineHeight: 24, textOffsetY: 0, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "52%", bottom: "-50%", rotate: 0, lineHeight: 100, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-28%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -429,17 +480,20 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "74%", top: "15%" },
 
     thermoDim: { left: "54.25%", bottom: "46%", width: "18%", dropHeight: 45 },
+
+    coldDim: { left: "54.25%", bottom: "-14%", width: "5%", riseHeight: 62 },
   };
 
   const cfg6N4 = {
     processBar: { left: "53.75%", bottom: "46%", width: "18%", height: "4%" },
     
-    hlBar: { left: "53.75%", bottom: "24%", width: "20%", height: "2%" },
+    hlBar: { left: "53.75%", bottom: "24%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 25, textOffsetY: 0,},
+    hlDim: { left: "53.75%", bottom: "-42%", width: "18%", dropHeight: 135 },
 
     terminalBoxLeader: { left: "40%", bottom: "-11%", rotate: 25, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "51.5%", bottom: "-17%", rotate: 0, lineHeight: 24, textOffsetY: 0, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "51.5%", bottom: "-50%", rotate: 0, lineHeight: 109, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-25%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -447,24 +501,29 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "74%", top: "13%" },
 
     thermoDim: { left: "53.75%", bottom: "55%", width: "18%", dropHeight: 25 },
+
+    coldDim: { left: "53.75%", bottom: "-11%", width: "5%", riseHeight: 62 },
   };
 
   const cfg6N7 = {
     processBar: { left: "58.75%", bottom: "47%", width: "18%", height: "4%" },
     
-    hlBar: { left: "58.75%", bottom: "27%", width: "20%", height: "2%" },
+    hlBar: { left: "58.75%", bottom: "27%", width: "18%", height: "2%" },
     hlLeader: { left: "70%", bottom: "-5%", rotate: 10, lineHeight: 50, textOffsetY: 0,},
+    hlDim: { left: "58.75%", bottom: "-24%", width: "18%", dropHeight: 130 },
 
-    terminalBoxLeader: { left: "45%", bottom: "3%", rotate: 0, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "42%", bottom: "8%", rotate: 0, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "56.5%", bottom: "-11%", rotate: 0, lineHeight: 35, textOffsetY: 0, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "56.5%", bottom: "-30%", rotate: 0, lineHeight: 95, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
-    elemMatLeader: { left: "85%", bottom: "2%", rotate: 10, lineHeight: 15, textOffsetY: 6, textWidth: 200 },
+    elemMatLeader: { left: "88%", bottom: "2%", rotate: 10, lineHeight: 15, textOffsetY: 6, textWidth: 200 },
 
     immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
     immersionText: { left: "77%", top: "1%" },
 
     thermoDim: { left: "58.75%", bottom: "59%", width: "18%", dropHeight: 40 },
+
+    coldDim: { left: "58.75%", bottom: "-0%", width: "5%", riseHeight: 62 },
   };
 
 
@@ -472,12 +531,13 @@ const flangeLabel = useMemo(() => {
   const cfg8N1 = {
     processBar: { left: "54%", bottom: "47%", width: "18%", height: "4%" },
     
-    hlBar: { left: "54%", bottom: "26%", width: "20%", height: "2%" },
+    hlBar: { left: "54%", bottom: "26%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-15%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlDim: { left: "54%", bottom: "-35%", width: "18%", dropHeight: 140 },
 
     terminalBoxLeader: { left: "40%", bottom: "-15%", rotate: 25, lineHeight: 55, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "51.5%", bottom: "-21%", rotate: 0, lineHeight: 45, textOffsetY: 0, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "51.5%", bottom: "-42%", rotate: 0, lineHeight: 102, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-18%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -485,17 +545,20 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "74%", top: "12%" },
 
     thermoDim: { left: "54%", bottom: "56%", width: "18%", dropHeight: 30 },
+
+    coldDim: { left: "54%", bottom: "-6%", width: "5%", riseHeight: 62 },
   };
 
   const cfg8N4 = {
     processBar: { left: "52.25%", bottom: "43%", width: "18%", height: "4%" },
     
-    hlBar: { left: "52.25%", bottom: "24%", width: "20%", height: "2%" },
+    hlBar: { left: "52.25%", bottom: "24%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-12%", rotate: 10, lineHeight: 50, textOffsetY: 0,},
+    hlDim: { left: "52.25%", bottom: "-30%", width: "18%", dropHeight: 125 },
 
-    terminalBoxLeader: { left: "40%", bottom: "-15%", rotate: 25, lineHeight: 55, textOffsetY: 0, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "38%", bottom: "-15%", rotate: 25, lineHeight: 55, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "50%", bottom: "-18%", rotate: 0, lineHeight: 40, textOffsetY: 0, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "50%", bottom: "-39%", rotate: 0, lineHeight: 100, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-18%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -503,17 +566,20 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "73%", top: "18%" },
 
     thermoDim: { left: "52.25%", bottom: "52%", width: "18%", dropHeight: 25 },
+
+    coldDim: { left: "52.25%", bottom: "-6%", width: "5%", riseHeight: 62 },
   };
 
   const cfg8N7 = {
     processBar: { left: "49.75%", bottom: "41%", width: "18%", height: "4%" },
     
-    hlBar: { left: "49.75%", bottom: "19%", width: "20%", height: "2%" },
+    hlBar: { left: "49.75%", bottom: "19%", width: "18%", height: "2%" },
     hlLeader: { left: "60%", bottom: "-11%", rotate: 10, lineHeight: 30, textOffsetY: 0,},
+    hlDim: { left: "49.75%", bottom: "-32%", width: "18%", dropHeight: 115 },
 
     terminalBoxLeader: { left: "35%", bottom: "-10%", rotate: 0, lineHeight: 45, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "48%", bottom: "-18%", rotate: 0, lineHeight: 20, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "48%", bottom: "-40%", rotate: 0, lineHeight: 80, textOffsetY: 6, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-19%", rotate: 10, lineHeight: 40, textOffsetY: 6, textWidth: 200 },
 
@@ -521,6 +587,8 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "73%", top: "17%" },
 
     thermoDim: { left: "49.75%", bottom: "51%", width: "18%", dropHeight: 35 },
+
+    coldDim: { left: "49.75%", bottom: "-12%", width: "5%", riseHeight: 62 },
   };
 
 
@@ -528,12 +596,13 @@ const flangeLabel = useMemo(() => {
   const cfg12N1 = {
     processBar: { left: "55.25%", bottom: "48%", width: "18%", height: "4%" },
     
-    hlBar: { left: "55.25%", bottom: "30%", width: "20%", height: "2%" },
+    hlBar: { left: "55.25%", bottom: "30%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-12%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
+    hlDim: { left: "55.25%", bottom: "-35%", width: "18%", dropHeight: 145 },
 
-    terminalBoxLeader: { left: "43%", bottom: "-15%", rotate: 25, lineHeight: 64, textOffsetY: 0, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "40%", bottom: "-15%", rotate: 25, lineHeight: 64, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "53%", bottom: "-18%", rotate: 0, lineHeight: 47, textOffsetY: 0, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "53%", bottom: "-42%", rotate: 0, lineHeight: 112, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-15%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -541,17 +610,20 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "75%", top: "8%" },
 
     thermoDim: { left: "55.25%", bottom: "57%", width: "18%", dropHeight: 30 },
+
+    coldDim: { left: "55.25%", bottom: "-2%", width: "5%", riseHeight: 62 },
   };
 
   const cfg12N4 = {
     processBar: { left: "55.5%", bottom: "49%", width: "18%", height: "4%" },
     
-    hlBar: { left: "55.5%", bottom: "30%", width: "20%", height: "2%" },
+    hlBar: { left: "55.5%", bottom: "30%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-13%", rotate: 10, lineHeight: 55, textOffsetY: 0,},
+    hlDim: { left: "55.5%", bottom: "-43%", width: "18%", dropHeight: 155 },
 
-    terminalBoxLeader: { left: "43%", bottom: "-15%", rotate: 25, lineHeight: 55, textOffsetY: 0, textWidth: 220, textRotate:0 },
+    terminalBoxLeader: { left: "40%", bottom: "-15%", rotate: 25, lineHeight: 55, textOffsetY: 0, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "53%", bottom: "-20%", rotate: 0, lineHeight: 47, textOffsetY: 0, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "53%", bottom: "-50%", rotate: 0, lineHeight: 123, textOffsetY: 0, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-18%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -559,17 +631,20 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "75%", top: "6%" },
 
     thermoDim: { left: "55.5%", bottom: "57%", width: "18%", dropHeight: 30 },
+
+    coldDim: { left: "55.5%", bottom: "-4%", width: "5%", riseHeight: 62 },
   };
 
   const cfg12N7 = {
     processBar: { left: "52.25%", bottom: "48%", width: "18%", height: "4%" },
     
-    hlBar: { left: "52.25%", bottom: "22%", width: "20%", height: "2%" },
+    hlBar: { left: "52.25%", bottom: "22%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-15%", rotate: 10, lineHeight: 45, textOffsetY: 0,},
+    hlDim: { left: "52.25%", bottom: "-35%", width: "18%", dropHeight: 120 },
 
     terminalBoxLeader: { left: "38%", bottom: "-5%", rotate: 0, lineHeight: 60, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
-    flangeLeader: { left: "50.5%", bottom: "-23%", rotate: 0, lineHeight: 45, textOffsetY: 6, textWidth: 220, textRotate:0 },
+    flangeLeader: { left: "50.5%", bottom: "-45%", rotate: 0, lineHeight: 105, textOffsetY: 6, textWidth: 220, textRotate:0 },
     
     elemMatLeader: { left: "85%", bottom: "-24%", rotate: 10, lineHeight: 55, textOffsetY: 6, textWidth: 200 },
 
@@ -577,6 +652,8 @@ const flangeLabel = useMemo(() => {
     immersionText: { left: "75%", top: "9.5%" },
 
     thermoDim: { left: "52.25%", bottom: "64%", width: "18%", dropHeight: 70 },
+
+    coldDim: { left: "52.25%", bottom: "-11%", width: "5%", riseHeight: 62 },
   };    
 
 
@@ -626,6 +703,267 @@ const flangeLabel = useMemo(() => {
 
     return null;
   }, [flangeSize, elementNumN, terminalBox, isN7]);
+
+
+  const DimOverlay = ({
+    left,
+    bottom,
+    width,
+    dropHeight,
+    value,
+    label,
+    zIndex = 80,
+  }: {
+    left: string;
+    bottom: string;
+    width: string;
+    dropHeight: number;
+    value: number;
+    label: string;
+    zIndex?: number;
+  }) => (
+    <div
+      className="absolute pointer-events-none"
+      style={{
+        left,
+        bottom,
+        width,
+        height: `${dropHeight + 60}px`,
+        zIndex,
+      }}
+    >
+      {/* left drop */}
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          top: 26,
+          height: dropHeight,
+          borderLeft: "1px solid black",
+        }}
+      />
+      {/* right drop */}
+      <div
+        style={{
+          position: "absolute",
+          right: 0,
+          top: 26,
+          height: dropHeight,
+          borderLeft: "1px solid black",
+        }}
+      />
+      {/* top dim line */}
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          top: 26,
+          borderTop: "1px solid black",
+        }}
+      />
+      {/* left arrow */}
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          top: 22,
+          width: 0,
+          height: 0,
+          borderTop: "4px solid transparent",
+          borderBottom: "4px solid transparent",
+          borderRight: "14px solid black",
+          transform: "translateX(-2px)",
+        }}
+      />
+      {/* right arrow */}
+      <div
+        style={{
+          position: "absolute",
+          right: 0,
+          top: 22,
+          width: 0,
+          height: 0,
+          borderTop: "4px solid transparent",
+          borderBottom: "4px solid transparent",
+          borderLeft: "14px solid black",
+          transform: "translateX(2px)",
+        }}
+      />
+
+      {/* number */}
+      <div
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: 5,
+          transform: "translateX(-50%)",
+          fontSize: "15px",
+          fontWeight: "bold",
+          background: "white",
+          padding: "1px 6px",
+          color: "black",
+        }}
+      >
+        {value}&quot;
+      </div>
+
+      {/* label */}
+      <div
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: 25,
+          transform: "translateX(-50%)",
+          fontSize: "12px",
+          background: "white",
+          padding: "1px 6px",
+          color: "black",
+          fontWeight: "bold",
+          textAlign: "center",
+          whiteSpace: "nowrap",
+        }}
+      >
+        {label}
+      </div>
+    </div>
+  );
+
+  const DimOverlayUp = ({
+    left,
+    bottom,
+    width,
+    dropHeight,
+    value,
+    label,
+    zIndex = 85,
+  }: {
+    left: string;
+    bottom: string;
+    width: string;
+    dropHeight: number;
+    value: number;
+    label: string;
+    zIndex?: number;
+  }) => {
+    // HL dim line is at the "bottom" of the drops
+    const lineY = dropHeight + 26;
+
+    return (
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          left,
+          bottom,
+          width,
+          height: `${dropHeight + 60}px`,
+          zIndex,
+        }}
+      >
+        {/* left drop (goes UP) */}
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            top: 26,
+            height: dropHeight,
+            borderLeft: "1px solid black",
+          }}
+        />
+
+        {/* right drop (goes UP) */}
+        <div
+          style={{
+            position: "absolute",
+            right: 0,
+            top: 26,
+            height: dropHeight,
+            borderLeft: "1px solid black",
+          }}
+        />
+
+        {/* horizontal dim line (this is the "main" line for HL) */}
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: lineY,
+            borderTop: "1px solid black",
+          }}
+        />
+
+        {/* arrows on the dim line */}
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            top: lineY - 4,
+            width: 0,
+            height: 0,
+            borderTop: "4px solid transparent",
+            borderBottom: "4px solid transparent",
+            borderRight: "14px solid black",
+            transform: "translateX(-2px)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            right: 0,
+            top: lineY - 4,
+            width: 0,
+            height: 0,
+            borderTop: "4px solid transparent",
+            borderBottom: "4px solid transparent",
+            borderLeft: "14px solid black",
+            transform: "translateX(2px)",
+          }}
+        />
+
+        {/* ✅ number ON the dim line (between arrows) */}
+        <div
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: lineY - 13, // <-- centers text on the line
+            transform: "translateX(-50%)",
+            fontSize: "15px",
+            fontWeight: "bold",
+            background: "white",
+            padding: "1px 6px",
+            color: "black",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {value}&quot;
+        </div>
+
+        {/* ✅ label just UNDER the dim line */}
+        <div
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: lineY + 6,
+            transform: "translateX(-50%)",
+            fontSize: "12px",
+            background: "white",
+            padding: "1px 6px",
+            color: "black",
+            fontWeight: "bold",
+            textAlign: "center",
+            whiteSpace: "nowrap",
+            minWidth: "260px",
+          }}
+        >
+          {label}
+        </div>
+      </div>
+    );
+  };
+
+
+
 
   return (
     <div ref={drawingRef} className=" relative w-[1000px] h-[772.73px] flex items-center justify-center bg-white border-2 border-slate-400 rounded-lg">
@@ -683,7 +1021,7 @@ const flangeLabel = useMemo(() => {
                   />
                 )}
 
-                {/* ===== High Limit (YELLOW bar) ===== */}
+                {/* ===== High Limit (RED bar) ===== */}
                 {showHL && (
                   <div
                     className="absolute pointer-events-none"
@@ -699,116 +1037,141 @@ const flangeLabel = useMemo(() => {
                   />
                 )}
 
-                {/* Thermowell DIM*/}
-                {showThermowellDim && (
+                {/* ✅ Thermowell DIM */}
+                {overlayCfg?.thermoDim && showThermowellDim && (
+                  <DimOverlay
+                    left={overlayCfg.thermoDim.left}
+                    bottom={overlayCfg.thermoDim.bottom}
+                    width={overlayCfg.thermoDim.width}
+                    dropHeight={overlayCfg.thermoDim.dropHeight}
+                    value={thermoLength}
+                    label="Thermowell"
+                    zIndex={80}
+                  />
+                )}
+
+                {/* ✅ HL DIM (title changes based on option) */}
+                {overlayCfg?.hlDim && showHLDim && (
+                  <DimOverlayUp
+                    left={overlayCfg.hlDim.left}
+                    bottom={overlayCfg.hlDim.bottom}
+                    width={overlayCfg.hlDim.width}
+                    dropHeight={overlayCfg.hlDim.dropHeight}
+                    value={hlLength}
+                    label={hlDimLabel}
+                    zIndex={85}
+                  />
+                )}
+
+                {//ColdLength
+                }
+                {showColdDim && overlayCfg.coldDim && (
+                <div
+                  className="absolute pointer-events-none"
+                  style={{
+                    left: overlayCfg.coldDim.left,
+                    bottom: overlayCfg.coldDim.bottom,
+                    width: overlayCfg.coldDim.width,
+                    height: `${overlayCfg.coldDim.riseHeight + 60}px`,
+                    zIndex: 80,
+                  }}
+                >
+                  {/* 1) Vertical rise line (LEFT) */}
                   <div
-                    className="absolute pointer-events-none"
                     style={{
-                      left: overlayCfg.thermoDim.left,
-                      bottom: overlayCfg.thermoDim.bottom,
-                      width: overlayCfg.thermoDim.width,
-                      height: `${overlayCfg.thermoDim.dropHeight + 60}px`,
-                      zIndex: 80,
+                      position: "absolute",
+                      left: 0,
+                      bottom: 26,
+                      height: overlayCfg.coldDim.riseHeight,
+                      borderLeft: "1px solid black",
+                    }}
+                  />
+
+                  {/* 2) Vertical rise line (RIGHT) */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      right: 0,
+                      bottom: 26,
+                      height: overlayCfg.coldDim.riseHeight,
+                      borderLeft: "1px solid black",
+                    }}
+                  />
+
+                  {/* 3) Dimension line (BOTTOM) */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: 0,
+                      right: 0,
+                      bottom: 26,
+                      borderBottom: "1px solid black",
+                    }}
+                  />
+
+                  {/* 4) Left arrow (pointing inward) */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: 0,
+                      bottom: 22,
+                      width: 0,
+                      height: 0,
+                      borderTop: "4px solid transparent",
+                      borderBottom: "4px solid transparent",
+                      borderRight: "14px solid black",
+                      transform: "translateX(-2px)",
+                    }}
+                  />
+
+                  {/* 5) Right arrow (pointing inward) */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      right: 0,
+                      bottom: 22,
+                      width: 0,
+                      height: 0,
+                      borderTop: "4px solid transparent",
+                      borderBottom: "4px solid transparent",
+                      borderLeft: "14px solid black",
+                      transform: "translateX(2px)",
+                    }}
+                  />
+
+                  {/* 6) Number (ABOVE the bottom line) */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: "50%",
+                      bottom: 15,
+                      transform: "translateX(-50%)",
+                      fontSize: "15px",
+                      background: "white",
+                      padding: "1px 6px",
                     }}
                   >
-                    {/* 1) Vertical drop line (LEFT) */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        left: 0,
-                        top: 26,
-                        height: overlayCfg.thermoDim.dropHeight,
-                        borderLeft: "1px solid black",
-                      }}
-                    />
-
-                    {/* 2) Vertical drop line (RIGHT) */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        right: 0,
-                        top: 26,
-                        height: overlayCfg.thermoDim.dropHeight,
-                        borderLeft: "1px solid black",
-                      }}
-                    />
-
-                    {/* 3) Dimension line (top) */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        left: 0,
-                        right: 0,
-                        top: 26,
-                        borderTop: "1px solid black",
-                      }}
-                    />
-
-                    {/* 4) Left arrow */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        left: 0,
-                        top: 22,
-                        width: 0,
-                        height: 0,
-                        borderTop: "4px solid transparent",
-                        borderBottom: "4px solid transparent",
-                        borderRight: "14px solid black",
-                        transform: "translateX(-2px)",
-                      }}
-                    />
-
-                    {/* 5) Right arrow */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        right: 0,
-                        top: 22,
-                        width: 0,
-                        height: 0,
-                        borderTop: "4px solid transparent",
-                        borderBottom: "4px solid transparent",
-                        borderLeft: "14px solid black",
-                        transform: "translateX(2px)",
-                      }}
-                    />
-
-                    {/* 6) Number */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        left: "50%",
-                        top: 5,
-                        transform: "translateX(-50%)",
-                        fontSize: "15px",
-                        fontWeight: "bold",
-                        background: "white",
-                        padding: "1px 6px",
-                        color:"black"
-                      }}
-                    >
-                      {thermoLength}&quot;
-                    </div>
-
-                    {/* 7) Label */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        left: "50%",
-                        top: 25,
-                        transform: "translateX(-50%)",
-                        fontSize: "12px",
-                        background: "white",
-                        padding: "1px 6px",
-                        color:"black",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      Thermowell
-                    </div>
+                    {coldLength}&quot;
                   </div>
-                )}
+
+                  {/* 7) Label (optional) */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      textAlign: "right",
+                      width: 100,
+                      left: "50%",
+                      bottom: 0,
+                      transform: "translateX(-50%)",
+                      fontSize: "12px",
+                      background: "white",
+                      padding: "1px 6px",
+                    }}
+                  >
+                    Cold Length
+                  </div>
+                </div>
+              )}
 
                 {/* ============================================
                    IMMERSION DIMENSION: remove arrows/line
@@ -861,33 +1224,33 @@ const flangeLabel = useMemo(() => {
                         }}
                       >
                         {/* triangle */}
-                        <div className="w-0 h-0 border-l-[10px] border-r-[10px] border-b-[18px] border-l-transparent border-r-transparent border-b-black" />
+                        {/* <div className="w-0 h-0 border-l-[10px] border-r-[10px] border-b-[18px] border-l-transparent border-r-transparent border-b-black" /> */}
 
                         {/* leader line */}
                         <div
-                          style={{
-                            height: overlayCfg.hlLeader.lineHeight,
-                            borderLeft: "2px solid black",
-                            marginLeft: "9px",
-                          }}
+                          // style={{
+                          //   height: overlayCfg.hlLeader.lineHeight,
+                          //   borderLeft: "2px solid black",
+                          //   marginLeft: "9px",
+                          // }}
                         />
 
                         {/* label */}
                         <div
-                          className="text-black"
-                          style={{
-                            marginLeft: "-85px",
-                            marginTop: overlayCfg.hlLeader.textOffsetY,
-                            width: "220px",
-                            transform: "rotate(-10deg)",
-                            fontSize: "15px",
-                            background: "white",
-                            padding: "2px 6px",
-                            fontWeight: "bold",
-                          }}
+                          // className="text-black"
+                          // style={{
+                          //   marginLeft: "-85px",
+                          //   marginTop: overlayCfg.hlLeader.textOffsetY,
+                          //   width: "220px",
+                          //   transform: "rotate(-10deg)",
+                          //   fontSize: "15px",
+                          //   background: "white",
+                          //   padding: "2px 6px",
+                          //   fontWeight: "bold",
+                          // }}
                         >
-                          {hlSensor === "HLTC" && <>High-Limit Thermocouple</>}
-                          {hlSensor === "HLTS" && <>High-Limit Thermostat</>}
+                          {/* {hlSensor === "HLTC" && <>High-Limit Thermocouple</>}
+                          {hlSensor === "HLTS" && <>High-Limit Thermostat</>} */}
                         </div>
                       </div>
                     )}

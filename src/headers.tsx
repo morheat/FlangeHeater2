@@ -89,12 +89,12 @@ const Header: React.FC<headerProps> = ({
           {" PH"}
         </div>
         <div>
-          Amps: {amps === null ? "" : amps.toFixed(2)}
+          Amps: {amps === null ? "" : amps.toFixed(1)}
           {" A"}
         </div>
         <div>Wattage: {wattageDisplay}</div>
         <div>
-          Watt Density: {wattDensity === null ? "" : wattDensity.toFixed(2)}
+          Watt Density: {wattDensity === null ? "" : wattDensity.toFixed(1)}
           {" W/in\u00B2"}
         </div>
       </div>
