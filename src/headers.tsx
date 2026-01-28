@@ -77,9 +77,6 @@ const Header: React.FC<headerProps> = ({
         {formattedDate}
       </div>
       <div className="absolute w-[18rem] mt-[230px] ml-[-420px] ">
-        {thermostat !== "" && (
-          <div className="">Using {" " + thermostat + " "} thermostat</div>
-        )}
         <div>
           Voltage: {voltage}
           {" V"}
