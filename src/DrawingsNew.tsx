@@ -54,6 +54,7 @@ interface drawingProps {
   wattage: string;
   terminalBox: string;
   coldLength: number;
+  processRange: string;
 }
 
 const Drawings10: React.FC<drawingProps> = ({
@@ -73,7 +74,8 @@ const Drawings10: React.FC<drawingProps> = ({
   hlLength,
   processTemp, // (optional later)
   thermoLength,
-  coldLength
+  coldLength,
+  processRange
 }) => {
   const showHL = hlSensor !== "nHL";
   const showProcess = processTemp !== "nT";
@@ -177,7 +179,53 @@ const hlDimLabel = useMemo(() => {
   return "High-Limit";
 }, [hlSensor]);
 
+  const cToF = (c: number) => (c * 9) / 5 + 32;
+  const fToC = (f: number) => ((f - 32) * 5) / 9;
 
+  const processThermowellLabel = useMemo(() => {
+    if (processTemp === "nT") return "";
+
+    if (processTemp === "J") return "Process Thermowell\nType J Thermocouple";
+    if (processTemp === "K") return "Process Thermowell\nType K Thermocouple";
+    if (processTemp === "RTD") return "Process Thermowell\nRTD";
+
+    // thermostat cases
+    const range = processRange || "";
+
+    if (processTemp === "SPST") {
+      // stored like "C:0,40"
+      const m = range.match(/^C:(-?\d+),(-?\d+)$/);
+      if (!m) return "Process Thermowell\nSPST Thermostat";
+      const c1 = Number(m[1]);
+      const c2 = Number(m[2]);
+      const f1 = Math.round(cToF(c1));
+      const f2 = Math.round(cToF(c2));
+      return `Process Thermowell\nSPST Thermostat\n${c1}–${c2}°C (${f1}–${f2}°F)`;
+    }
+
+    if (processTemp === "DPST") {
+      // stored like "F:0,100"
+      const m = range.match(/^F:(-?\d+),(-?\d+)$/);
+      if (!m) return "Process Thermowell\nDPST Thermostat";
+      const f1 = Number(m[1]);
+      const f2 = Number(m[2]);
+      const c1 = Math.round(fToC(f1));
+      const c2 = Math.round(fToC(f2));
+      return `Process Thermowell\nDPST Thermostat\n${f1}–${f2}°F (${c1}–${c2}°C)`;
+    }
+
+    return "Process Thermowell";
+  }, [processTemp, processRange]);
+
+type LeaderCfg = {
+  left: string;
+  bottom: string;
+  rotate: number;
+  lineHeight: number;
+  textOffsetY: number;
+  textWidth?: number;
+  textRotate?: number; // lets you rotate text separately if you want
+};
 
   // =========================
   // CONFIGS 
@@ -186,6 +234,7 @@ const hlDimLabel = useMemo(() => {
   //10in
   const cfg10N14 = {
     processBar: { left: "57%", bottom: "45%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "110%", rotate: 40, lineHeight: 205, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "57%", bottom: "25%", width: "18%", height: "2%" },
     hlLeader: {left: "70%", bottom: "-5%", rotate: 10, lineHeight: 19, textOffsetY: 6},
@@ -208,6 +257,8 @@ const hlDimLabel = useMemo(() => {
   const cfg10N7 = {
     // ✅ change these independently for N7 (up/down = bottom, left/right = left)
     processBar: { left: "53.5%", bottom: "44%", width: "18%", height: "4%" }, //Blue Bar
+    processLeader: { left: "80%", bottom: "110%", rotate: 40, lineHeight: 240, textOffsetY: 6, textWidth: 170, textRotate: 0},
+
     hlBar: { left: "53.5%", bottom: "19.5%", width: "18%", height: "2%" }, //yello Bar
     hlDim: { left: "53.5%", bottom: "-25%", width: "18%", dropHeight: 105 },
 
@@ -230,6 +281,7 @@ const hlDimLabel = useMemo(() => {
   //3in
   const cfg3N14_E3 = {
     processBar: { left: "53.25%", bottom: "44.5%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "100%", rotate: 50, lineHeight: 205, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "53.25%", bottom: "32.5%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-10%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
@@ -251,6 +303,7 @@ const hlDimLabel = useMemo(() => {
 
   const cfg3N14_E6 = {
     processBar: { left: "52%", bottom: "47%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "100%", rotate: 50, lineHeight: 215, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "52%", bottom: "36%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-3%", rotate: 10, lineHeight: 60, textOffsetY: 0},
@@ -272,6 +325,7 @@ const hlDimLabel = useMemo(() => {
 
   const cfg3N7_E3 = {
     processBar: { left: "52%", bottom: "46%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "100%", rotate: 50, lineHeight: 225, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "52%", bottom: "35%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-3%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
@@ -293,6 +347,7 @@ const hlDimLabel = useMemo(() => {
 
   const cfg3N7_E6 = {
     processBar: { left: "56%", bottom: "45%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "100%", rotate: 40, lineHeight: 205, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "56%", bottom: "36%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-.5%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
@@ -315,6 +370,7 @@ const hlDimLabel = useMemo(() => {
   //4 inches
   const cfg4N7_E6 = {
     processBar: { left: "60.25%", bottom: "46%", width: "15%", height: "4%" },
+    processLeader: { left: "80%", bottom: "110%", rotate: 42, lineHeight: 180, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "60.25%", bottom: "36%", width: "15%", height: "2%" },
     hlLeader: { left: "70%", bottom: "-12%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
@@ -336,6 +392,7 @@ const hlDimLabel = useMemo(() => {
 
   const cfg4N7_E9 = {
     processBar: { left: "60%", bottom: "44%", width: "15%", height: "4%" },
+    processLeader: { left: "80%", bottom: "110%", rotate: 40, lineHeight: 195, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "60%", bottom: "32%", width: "15%", height: "2%" },
     hlLeader: { left: "70%", bottom: "-15%", rotate: 10, lineHeight: 65, textOffsetY: 0,},
@@ -357,6 +414,7 @@ const hlDimLabel = useMemo(() => {
 
   const cfg4N14_E6 = {
     processBar: { left: "53%", bottom: "45%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "110%", rotate: 45, lineHeight: 225, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "53%", bottom: "34%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-8%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
@@ -378,6 +436,7 @@ const hlDimLabel = useMemo(() => {
 
   const cfg4N14_E9 = {
     processBar: { left: "52.75%", bottom: "42%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "110%", rotate: 40, lineHeight: 250, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "52.75%", bottom: "30%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
@@ -400,6 +459,7 @@ const hlDimLabel = useMemo(() => {
   // 5 inches
   const cfg5N1 = {
     processBar: { left: "53.5%", bottom: "43%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "110%", rotate: 42, lineHeight: 235, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "53.5%", bottom: "33%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-6%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
@@ -421,6 +481,7 @@ const hlDimLabel = useMemo(() => {
 
   const cfg5N4 = {
     processBar: { left: "53%", bottom: "43%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "100%", rotate: 42, lineHeight: 245, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "53%", bottom: "34%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "1.5%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
@@ -442,6 +503,7 @@ const hlDimLabel = useMemo(() => {
 
   const cfg5N7 = {
     processBar: { left: "62.5%", bottom: "47%", width: "15%", height: "4%" },
+    processLeader: { left: "80%", bottom: "110%", rotate: 33, lineHeight: 190, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "62.5%", bottom: "38%", width: "15%", height: "2%" },
     hlLeader: { left: "72%", bottom: "-6%", rotate: 10, lineHeight: 70, textOffsetY: 0,},
@@ -465,6 +527,7 @@ const hlDimLabel = useMemo(() => {
   // 6 inches
   const cfg6N1 = {
     processBar: { left: "54.25%", bottom: "42%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "110%", rotate: 43, lineHeight: 215, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "54.25%", bottom: "20%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-10%", rotate: 10, lineHeight: 22, textOffsetY: 0,},
@@ -486,6 +549,7 @@ const hlDimLabel = useMemo(() => {
 
   const cfg6N4 = {
     processBar: { left: "53.75%", bottom: "46%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "110%", rotate: 46, lineHeight: 215, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "53.75%", bottom: "24%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 25, textOffsetY: 0,},
@@ -507,6 +571,7 @@ const hlDimLabel = useMemo(() => {
 
   const cfg6N7 = {
     processBar: { left: "58.75%", bottom: "47%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "110%", rotate: 31, lineHeight: 208, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "58.75%", bottom: "27%", width: "18%", height: "2%" },
     hlLeader: { left: "70%", bottom: "-5%", rotate: 10, lineHeight: 50, textOffsetY: 0,},
@@ -530,6 +595,7 @@ const hlDimLabel = useMemo(() => {
   // 8 inches
   const cfg8N1 = {
     processBar: { left: "54%", bottom: "47%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "110%", rotate: 45, lineHeight: 220, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "54%", bottom: "26%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-15%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
@@ -551,6 +617,7 @@ const hlDimLabel = useMemo(() => {
 
   const cfg8N4 = {
     processBar: { left: "52.25%", bottom: "43%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "110%", rotate: 44, lineHeight: 245, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "52.25%", bottom: "24%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-12%", rotate: 10, lineHeight: 50, textOffsetY: 0,},
@@ -572,6 +639,7 @@ const hlDimLabel = useMemo(() => {
 
   const cfg8N7 = {
     processBar: { left: "49.75%", bottom: "41%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "110%", rotate: 48, lineHeight: 260, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "49.75%", bottom: "19%", width: "18%", height: "2%" },
     hlLeader: { left: "60%", bottom: "-11%", rotate: 10, lineHeight: 30, textOffsetY: 0,},
@@ -595,6 +663,7 @@ const hlDimLabel = useMemo(() => {
   // 12 inches
   const cfg12N1 = {
     processBar: { left: "55.25%", bottom: "48%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "110%", rotate: 42, lineHeight: 205, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "55.25%", bottom: "30%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-12%", rotate: 10, lineHeight: 60, textOffsetY: 0,},
@@ -616,6 +685,7 @@ const hlDimLabel = useMemo(() => {
 
   const cfg12N4 = {
     processBar: { left: "55.5%", bottom: "49%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "110%", rotate: 45, lineHeight: 195, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "55.5%", bottom: "30%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-13%", rotate: 10, lineHeight: 55, textOffsetY: 0,},
@@ -637,6 +707,7 @@ const hlDimLabel = useMemo(() => {
 
   const cfg12N7 = {
     processBar: { left: "52.25%", bottom: "48%", width: "18%", height: "4%" },
+    processLeader: { left: "80%", bottom: "110%", rotate: 48, lineHeight: 225, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "52.25%", bottom: "22%", width: "18%", height: "2%" },
     hlLeader: { left: "65%", bottom: "-15%", rotate: 10, lineHeight: 45, textOffsetY: 0,},
@@ -962,7 +1033,89 @@ const hlDimLabel = useMemo(() => {
     );
   };
 
+  const LeaderOverlay = ({
+    cfg,
+    label,
+    color = "#1d4ed8",
+    triangleColor = "#1d4ed8",
+    zIndex = 205,
+  }: {
+    cfg: LeaderCfg;
+    label: string;
+    color?: string;
+    triangleColor?: string;
+    zIndex?: number;
+  }) => {
+    const lineLen = cfg.lineHeight;
 
+    return (
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          left: cfg.left,
+          bottom: cfg.bottom,
+          zIndex,
+        }}
+      >
+        {/* ✅ LABEL BOX is the anchor reference */}
+        <div
+          className="text-black"
+          style={{
+            width: `${cfg.textWidth ?? 260}px`,
+            fontSize: "15px",
+            fontWeight: "bold",
+            background: "white",
+            padding: "2px 6px",
+            textAlign: "center",
+            whiteSpace: "pre-line",
+            border: `2px solid ${color}`,
+            position: "relative", // IMPORTANT: arrow anchors to this box
+            transform: `rotate(${cfg.textRotate ?? 0}deg)`,
+            transformOrigin: "center",
+          }}
+        >
+          {label}
+
+          {/* ✅ ARROW GROUP rotates around bottom-center of the box */}
+          <div
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: "100%", // bottom edge of box
+              transform: `translateX(-50%) rotate(${cfg.rotate}deg)`,
+              transformOrigin: "top center", // <-- bottom-center of box
+              width: 0,
+              height: 0,
+            }}
+          >
+            {/* line */}
+            <div
+              style={{
+                height: `${lineLen}px`,
+                borderLeft: `2px solid ${color}`,
+                marginLeft: "-1px",
+              }}
+            />
+
+            {/* triangle at the end of the line */}
+            <div
+              style={{
+                position: "absolute",
+                left: "50%",
+                top: `${lineLen}px`,
+                transform: "translateX(-50%)",
+                width: 0,
+                height: 0,
+                borderLeft: "10px solid transparent",
+                borderRight: "10px solid transparent",
+                borderTop: `18px solid ${triangleColor}`,
+              }}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  };
 
 
   return (
@@ -1020,6 +1173,18 @@ const hlDimLabel = useMemo(() => {
                     }}
                   />
                 )}
+                
+                {/* ✅ Adjustable Process Thermowell leader */}
+                {showProcess && overlayCfg?.processLeader && (
+                  <LeaderOverlay
+                    cfg={overlayCfg.processLeader}
+                    label={processThermowellLabel}
+                    color="#1d4ed8"
+                    triangleColor="#1d4ed8"
+                    zIndex={206}
+                  />
+                )}
+
 
                 {/* ===== High Limit (RED bar) ===== */}
                 {showHL && (

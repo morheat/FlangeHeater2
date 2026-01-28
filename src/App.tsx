@@ -21,6 +21,7 @@ function App() {
   const [elementNumVar, setElementNum] = useState<number>(1);
   const [coldLength, setColdLength] = useState<number>(2.5);
   const [hlLength, setHlLength] = useState<number>(10); // pick whatever default you want
+  const [processRange, setProcessRange] = useState<string>("");
 
 
   const drawingRef = useRef<HTMLDivElement>(null);
@@ -272,21 +273,32 @@ function App() {
 
         <div>
           <h1>Temp Sensor Option</h1>
+
           <div className="flex space-x-3">
+            {/* ✅ Process Thermowell YES/NO (make blue) */}
             <select
-              className="select select-xs border-cyan-500 border-2 text-gray-700 dark:text-gray-300"
+              className="select select-xs border-blue-600 border-2 text-gray-700 dark:text-gray-300"
+              value={processSensor === "nT" ? "No" : "Yes"}
               onChange={(e) => {
-                setProcessSensor(e.target.value);
-                if (e.target.value !== "TS") setProcessTStat("");
-                else setProcessTStat("SPST");
+                const v = e.target.value;
+
+                if (v === "No") {
+                  setProcessSensor("nT");
+                  setProcessTStat("");
+                  setProcessRange("");
+                } else {
+                  // default when turning on
+                  setProcessSensor("J"); // Type J default (change if you want)
+                  setProcessTStat("");
+                  setProcessRange("");
+                }
               }}
-              value={processSensor}
             >
-              <option value="nT">None</option>
-              <option value="TC">Process Thermocouple</option>
-              <option value="TS">Process Thermostat</option>
+              <option value="No">Process Thermowell: No</option>
+              <option value="Yes">Process Thermowell: Yes</option>
             </select>
 
+            {/* HL selector stays the same */}
             <select
               className="select select-xs border-cyan-500 border-2 text-gray-700 dark:text-gray-300"
               onChange={(e) => setHLSensor(e.target.value)}
@@ -297,7 +309,82 @@ function App() {
               <option value="HLTS">High-Limit Thermostat</option>
             </select>
           </div>
+
+          {/* ✅ If Process Thermowell YES, show the options list */}
+          {processSensor !== "nT" && (
+            <div className="mt-2">
+              <h1>Process Thermowell Type</h1>
+
+              <select
+                className="select select-xs border-blue-600 border-2 text-gray-700 dark:text-gray-300 w-full"
+                value={processSensor}
+                onChange={(e) => {
+                  const v = e.target.value;
+
+                  setProcessSensor(v);
+
+                  // thermostat logic
+                  if (v === "SPST") {
+                    setProcessTStat("SPST");
+                    setProcessRange("C:-30,30"); // default
+                  } else if (v === "DPST") {
+                    setProcessTStat("DPST");
+                    setProcessRange("F:0,100"); // default
+                  } else {
+                    setProcessTStat("");
+                    setProcessRange("");
+                  }
+                }}
+              >
+                <option value="J">1) Type J Thermocouple</option>
+                <option value="K">2) Type K Thermocouple</option>
+                <option value="RTD">3) RTD</option>
+                <option value="SPST">4) SPST Thermostat</option>
+                <option value="DPST">5) DPST Thermostat</option>
+              </select>
+
+              {/* ✅ SPST ranges are in °C, but show °F too */}
+              {processSensor === "SPST" && (
+                <div className="mt-2">
+                  <h1>SPST Range (°C / °F)</h1>
+                  <select
+                    className="select select-xs border-blue-600 border-2 text-gray-700 dark:text-gray-300 w-full"
+                    value={processRange}
+                    onChange={(e) => setProcessRange(e.target.value)}
+                  >
+                    <option value="C:-30,30">-30 to 30°C ( -22 to 86°F )</option>
+                    <option value="C:0,40">0 to 40°C ( 32 to 104°F )</option>
+                    <option value="C:0,50">0 to 50°C ( 32 to 122°F )</option>
+                    <option value="C:0,80">0 to 80°C ( 32 to 176°F )</option>
+                    <option value="C:0,90">0 to 90°C ( 32 to 194°F )</option>
+                    <option value="C:0,120">0 to 120°C ( 32 to 248°F )</option>
+                    <option value="C:0,150">0 to 150°C ( 32 to 302°F )</option>
+                    <option value="C:0,200">0 to 200°C ( 32 to 392°F )</option>
+                    <option value="C:0,250">0 to 250°C ( 32 to 482°F )</option>
+                    <option value="C:0,320">0 to 320°C ( 32 to 608°F )</option>
+                  </select>
+                </div>
+              )}
+
+              {/* ✅ DPST ranges are in °F, but show °C too */}
+              {processSensor === "DPST" && (
+                <div className="mt-2">
+                  <h1>DPST Range (°F / °C)</h1>
+                  <select
+                    className="select select-xs border-blue-600 border-2 text-gray-700 dark:text-gray-300 w-full"
+                    value={processRange}
+                    onChange={(e) => setProcessRange(e.target.value)}
+                  >
+                    <option value="F:0,100">0 to 100°F ( -18 to 38°C )</option>
+                    <option value="F:6,250">6 to 250°F ( -14 to 121°C )</option>
+                    <option value="F:50,550">50 to 550°F ( 10 to 288°C )</option>
+                  </select>
+                </div>
+              )}
+            </div>
+          )}
         </div>
+
 
         {processSensor === "TS" && (
           <div>
@@ -452,6 +539,7 @@ function App() {
         wattage={wattsVar}
         terminalBox={terminalBoxVar}
         coldLength={coldLength}
+        processRange={processRange}
       />
     </div>
   );
