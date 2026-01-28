@@ -21,8 +21,6 @@ const Header: React.FC<headerProps> = ({
   voltage,
   phase,
   wattage,
-  //terminalBox,
-  thermostat,
   elementNum,
   immersionLength,
   coldLength,
