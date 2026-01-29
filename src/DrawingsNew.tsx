@@ -262,6 +262,7 @@ type LeaderCfg = {
   textOffsetY: number;
   textWidth?: number;
   textRotate?: number; // lets you rotate text separately if you want
+  baseBoxHeight?: number;
 };
 
   // =========================
@@ -271,10 +272,10 @@ type LeaderCfg = {
   //10in
   const cfg10N14 = {
     processBar: { left: "57%", bottom: "45%", width: "18%", height: "4%" },
-    processLeader: { left: "80%", bottom: "110%", rotate: 40, lineHeight: 205, textOffsetY: 6, textWidth: 170, textRotate: 0},
+    processLeader: { left: "80%", bottom: "100%", rotate: 45, lineHeight: 180, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "57%", bottom: "25%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "75%", bottom: "-50%", rotate: -45, lineHeight: 225, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "57%", bottom: "-35%", width: "18%", dropHeight: 125 },
     
     terminalBoxLeader: { left: "43%", bottom: "-18%", rotate: 25, lineHeight: 55, textOffsetY: 0, textWidth: 220, textRotate:0 },
@@ -294,12 +295,12 @@ type LeaderCfg = {
   const cfg10N7 = {
     // ✅ change these independently for N7 (up/down = bottom, left/right = left)
     processBar: { left: "53.5%", bottom: "44%", width: "18%", height: "4%" }, //Blue Bar
-    processLeader: { left: "80%", bottom: "110%", rotate: 40, lineHeight: 240, textOffsetY: 6, textWidth: 170, textRotate: 0},
+    processLeader: { left: "80%", bottom: "100%", rotate: 45, lineHeight: 225, textOffsetY: 6, textWidth: 170, textRotate: 0},
 
     hlBar: { left: "53.5%", bottom: "19.5%", width: "18%", height: "2%" }, //yello Bar
     hlDim: { left: "53.5%", bottom: "-25%", width: "18%", dropHeight: 105 },
 
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "70%", bottom: "-35%", rotate: -45, lineHeight: 175, textOffsetY: 0, textWidth: 200 },
 
     terminalBoxLeader: { left: "40%", bottom: "-11%", rotate: 25, lineHeight: 55, textOffsetY: 6, textWidth: 220, textRotate:0 },
 
@@ -321,7 +322,7 @@ type LeaderCfg = {
     processLeader: { left: "80%", bottom: "100%", rotate: 50, lineHeight: 205, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "53.25%", bottom: "32.5%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "75%", bottom: "-50%", rotate: -45, lineHeight: 250, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "53.25%", bottom: "-35%", width: "18%", dropHeight: 150 },
 
     terminalBoxLeader: { left: "40%", bottom: "-18%", rotate: 25, lineHeight: 45, textOffsetY: 6, textWidth: 220, textRotate:0 },
@@ -343,7 +344,7 @@ type LeaderCfg = {
     processLeader: { left: "80%", bottom: "100%", rotate: 50, lineHeight: 215, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "52%", bottom: "36%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "75%", bottom: "-40%", rotate: -42, lineHeight: 240, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "52%", bottom: "-28%", width: "18%", dropHeight: 155 },
 
     terminalBoxLeader: { left: "38%", bottom: "-11%", rotate: 25, lineHeight: 45, textOffsetY: 6, textWidth: 220, textRotate:0 },
@@ -365,7 +366,7 @@ type LeaderCfg = {
     processLeader: { left: "80%", bottom: "100%", rotate: 50, lineHeight: 225, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "52%", bottom: "35%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "75%", bottom: "-38%", rotate: -44, lineHeight: 250, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "52%", bottom: "-25%", width: "18%", dropHeight: 150 },
 
     terminalBoxLeader: { left: "36%", bottom: "-10%", rotate: 25, lineHeight: 35, textOffsetY: 6, textWidth: 220, textRotate:0 },
@@ -387,7 +388,7 @@ type LeaderCfg = {
     processLeader: { left: "80%", bottom: "100%", rotate: 40, lineHeight: 205, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "56%", bottom: "36%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "75%", bottom: "-35%", rotate: -40, lineHeight: 230, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "56%", bottom: "-25%", width: "18%", dropHeight: 160 },
 
     terminalBoxLeader: { left: "34%", bottom: "-10%", rotate: 25, lineHeight: 35, textOffsetY: 6, textWidth: 220, textRotate:0 },
@@ -410,7 +411,7 @@ type LeaderCfg = {
     processLeader: { left: "80%", bottom: "110%", rotate: 42, lineHeight: 180, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "60.25%", bottom: "36%", width: "15%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "78%", bottom: "-60%", rotate: -40, lineHeight: 240, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "60.25%", bottom: "-48%", width: "15%", dropHeight: 170 },
 
     terminalBoxLeader: { left: "44%", bottom: "-8%", rotate: 0, lineHeight: 22, textOffsetY: 6, textWidth: 220, textRotate:0 },
@@ -432,7 +433,7 @@ type LeaderCfg = {
     processLeader: { left: "80%", bottom: "110%", rotate: 40, lineHeight: 195, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "60%", bottom: "32%", width: "15%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "78%", bottom: "-55%", rotate: -45, lineHeight: 250, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "60%", bottom: "-40%", width: "15%", dropHeight: 150 },
 
     terminalBoxLeader: { left: "43%", bottom: "-7%", rotate: 0, lineHeight: 22, textOffsetY: 6, textWidth: 220, textRotate:0 },
@@ -451,10 +452,10 @@ type LeaderCfg = {
 
   const cfg4N14_E6 = {
     processBar: { left: "53%", bottom: "45%", width: "18%", height: "4%" },
-    processLeader: { left: "80%", bottom: "110%", rotate: 45, lineHeight: 225, textOffsetY: 6, textWidth: 170, textRotate: 0},
+    processLeader: { left: "80%", bottom: "100%", rotate: 50, lineHeight: 200, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "53%", bottom: "34%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "75%", bottom: "-50%", rotate: -43, lineHeight: 250, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "53%", bottom: "-38%", width: "18%", dropHeight: 160 },
 
     terminalBoxLeader: { left: "38%", bottom: "-8%", rotate: 10, lineHeight: 35, textOffsetY: 6, textWidth: 220, textRotate:0 },
@@ -473,10 +474,10 @@ type LeaderCfg = {
 
   const cfg4N14_E9 = {
     processBar: { left: "52.75%", bottom: "42%", width: "18%", height: "4%" },
-    processLeader: { left: "80%", bottom: "110%", rotate: 40, lineHeight: 250, textOffsetY: 6, textWidth: 170, textRotate: 0},
+    processLeader: { left: "80%", bottom: "90%", rotate: 50, lineHeight: 210, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "52.75%", bottom: "30%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "75%", bottom: "-35%", rotate: -46, lineHeight: 225, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "52.75%", bottom: "-25%", width: "18%", dropHeight: 140 },
 
     terminalBoxLeader: { left: "38%", bottom: "-3%", rotate: 10, lineHeight: 35, textOffsetY: 6, textWidth: 220, textRotate:0 },
@@ -496,10 +497,10 @@ type LeaderCfg = {
   // 5 inches
   const cfg5N1 = {
     processBar: { left: "53.5%", bottom: "43%", width: "18%", height: "4%" },
-    processLeader: { left: "80%", bottom: "110%", rotate: 42, lineHeight: 235, textOffsetY: 6, textWidth: 170, textRotate: 0},
+    processLeader: { left: "80%", bottom: "100%", rotate: 46, lineHeight: 215, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "53.5%", bottom: "33%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "75%", bottom: "-40%", rotate: -45, lineHeight: 238, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "53.5%", bottom: "-28%", width: "18%", dropHeight: 145 },
 
     terminalBoxLeader: { left: "38%", bottom: "-8%", rotate: 25, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
@@ -518,10 +519,10 @@ type LeaderCfg = {
 
   const cfg5N4 = {
     processBar: { left: "53%", bottom: "43%", width: "18%", height: "4%" },
-    processLeader: { left: "80%", bottom: "100%", rotate: 42, lineHeight: 245, textOffsetY: 6, textWidth: 170, textRotate: 0},
+    processLeader: { left: "80%", bottom: "90%", rotate: 48, lineHeight: 215, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "53%", bottom: "34%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "75%", bottom: "-25%", rotate: -44, lineHeight: 225, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "53%", bottom: "-15%", width: "18%", dropHeight: 140 },
 
     terminalBoxLeader: { left: "38%", bottom: "1%", rotate: 25, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
@@ -540,10 +541,10 @@ type LeaderCfg = {
 
   const cfg5N7 = {
     processBar: { left: "62.5%", bottom: "47%", width: "15%", height: "4%" },
-    processLeader: { left: "80%", bottom: "110%", rotate: 33, lineHeight: 190, textOffsetY: 6, textWidth: 170, textRotate: 0},
+    processLeader: { left: "80%", bottom: "100%", rotate: 40, lineHeight: 165, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "62.5%", bottom: "38%", width: "15%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "75%", bottom: "-45%", rotate: -25, lineHeight: 205, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "62.5%", bottom: "-30%", width: "15%", dropHeight: 160 },
 
     terminalBoxLeader: { left: "45%", bottom: "-1%", rotate: 0, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
@@ -567,7 +568,7 @@ type LeaderCfg = {
     processLeader: { left: "80%", bottom: "110%", rotate: 43, lineHeight: 215, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "54.25%", bottom: "20%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "70%", bottom: "-50%", rotate: -40, lineHeight: 175, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "54.25%", bottom: "-42%", width: "18%", dropHeight: 130 },
 
     terminalBoxLeader: { left: "40%", bottom: "-15%", rotate: 25, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
@@ -589,7 +590,7 @@ type LeaderCfg = {
     processLeader: { left: "80%", bottom: "110%", rotate: 46, lineHeight: 215, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "53.75%", bottom: "24%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "70%", bottom: "-50%", rotate: -35, lineHeight: 170, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "53.75%", bottom: "-42%", width: "18%", dropHeight: 135 },
 
     terminalBoxLeader: { left: "40%", bottom: "-11%", rotate: 25, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
@@ -608,10 +609,10 @@ type LeaderCfg = {
 
   const cfg6N7 = {
     processBar: { left: "58.75%", bottom: "47%", width: "18%", height: "4%" },
-    processLeader: { left: "80%", bottom: "110%", rotate: 31, lineHeight: 208, textOffsetY: 6, textWidth: 170, textRotate: 0},
+    processLeader: { left: "80%", bottom: "99%", rotate: 35, lineHeight: 185, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "58.75%", bottom: "27%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "75%", bottom: "-35%", rotate: -30, lineHeight: 175, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "58.75%", bottom: "-24%", width: "18%", dropHeight: 130 },
 
     terminalBoxLeader: { left: "42%", bottom: "8%", rotate: 0, lineHeight: 31, textOffsetY: 0, textWidth: 220, textRotate:0 },
@@ -632,10 +633,10 @@ type LeaderCfg = {
   // 8 inches
   const cfg8N1 = {
     processBar: { left: "54%", bottom: "47%", width: "18%", height: "4%" },
-    processLeader: { left: "80%", bottom: "110%", rotate: 45, lineHeight: 220, textOffsetY: 6, textWidth: 170, textRotate: 0},
+    processLeader: { left: "80%", bottom: "100%", rotate: 50, lineHeight: 200, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "54%", bottom: "26%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "70%", bottom: "-45%", rotate: -35, lineHeight: 180, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "54%", bottom: "-35%", width: "18%", dropHeight: 140 },
 
     terminalBoxLeader: { left: "40%", bottom: "-15%", rotate: 25, lineHeight: 55, textOffsetY: 0, textWidth: 220, textRotate:0 },
@@ -654,10 +655,10 @@ type LeaderCfg = {
 
   const cfg8N4 = {
     processBar: { left: "52.25%", bottom: "43%", width: "18%", height: "4%" },
-    processLeader: { left: "80%", bottom: "110%", rotate: 44, lineHeight: 245, textOffsetY: 6, textWidth: 170, textRotate: 0},
+    processLeader: { left: "80%", bottom: "100%", rotate: 50, lineHeight: 225, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "52.25%", bottom: "24%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "70%", bottom: "-40%", rotate: -40, lineHeight: 180, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "52.25%", bottom: "-30%", width: "18%", dropHeight: 125 },
 
     terminalBoxLeader: { left: "38%", bottom: "-15%", rotate: 25, lineHeight: 55, textOffsetY: 0, textWidth: 220, textRotate:0 },
@@ -676,10 +677,10 @@ type LeaderCfg = {
 
   const cfg8N7 = {
     processBar: { left: "49.75%", bottom: "41%", width: "18%", height: "4%" },
-    processLeader: { left: "80%", bottom: "110%", rotate: 48, lineHeight: 260, textOffsetY: 6, textWidth: 170, textRotate: 0},
+    processLeader: { left: "80%", bottom: "100%", rotate: 52, lineHeight: 240, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "49.75%", bottom: "19%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "70%", bottom: "-40%", rotate: -45, lineHeight: 175, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "49.75%", bottom: "-32%", width: "18%", dropHeight: 115 },
 
     terminalBoxLeader: { left: "35%", bottom: "-10%", rotate: 0, lineHeight: 45, textOffsetY: 6, textWidth: 220, textRotate:0 },
@@ -700,10 +701,10 @@ type LeaderCfg = {
   // 12 inches
   const cfg12N1 = {
     processBar: { left: "55.25%", bottom: "48%", width: "18%", height: "4%" },
-    processLeader: { left: "80%", bottom: "110%", rotate: 42, lineHeight: 205, textOffsetY: 6, textWidth: 170, textRotate: 0},
+    processLeader: { left: "80%", bottom: "100%", rotate: 48, lineHeight: 185, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "55.25%", bottom: "30%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "75%", bottom: "-45%", rotate: -45, lineHeight: 230, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "55.25%", bottom: "-35%", width: "18%", dropHeight: 145 },
 
     terminalBoxLeader: { left: "40%", bottom: "-15%", rotate: 25, lineHeight: 64, textOffsetY: 0, textWidth: 220, textRotate:0 },
@@ -722,10 +723,10 @@ type LeaderCfg = {
 
   const cfg12N4 = {
     processBar: { left: "55.5%", bottom: "49%", width: "18%", height: "4%" },
-    processLeader: { left: "80%", bottom: "110%", rotate: 45, lineHeight: 195, textOffsetY: 6, textWidth: 170, textRotate: 0},
+    processLeader: { left: "80%", bottom: "100%", rotate: 52, lineHeight: 185, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "55.5%", bottom: "30%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "75%", bottom: "-50%", rotate: -45, lineHeight: 230, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "55.5%", bottom: "-43%", width: "18%", dropHeight: 155 },
 
     terminalBoxLeader: { left: "40%", bottom: "-15%", rotate: 25, lineHeight: 55, textOffsetY: 0, textWidth: 220, textRotate:0 },
@@ -744,10 +745,10 @@ type LeaderCfg = {
 
   const cfg12N7 = {
     processBar: { left: "52.25%", bottom: "48%", width: "18%", height: "4%" },
-    processLeader: { left: "80%", bottom: "110%", rotate: 48, lineHeight: 225, textOffsetY: 6, textWidth: 170, textRotate: 0},
+    processLeader: { left: "80%", bottom: "100%", rotate: 55, lineHeight: 215, textOffsetY: 6, textWidth: 170, textRotate: 0},
     
     hlBar: { left: "52.25%", bottom: "22%", width: "18%", height: "2%" },
-    hlLeader: { left: "65%", bottom: "-7%", rotate: 10, lineHeight: 28, textOffsetY: 0, textWidth: 200 },
+    hlLeader: { left: "70%", bottom: "-50%", rotate: -35, lineHeight: 180, textOffsetY: 0, textWidth: 200 },
     hlDim: { left: "52.25%", bottom: "-35%", width: "18%", dropHeight: 120 },
 
     terminalBoxLeader: { left: "38%", bottom: "-5%", rotate: 0, lineHeight: 60, textOffsetY: 6, textWidth: 220, textRotate:0 },
@@ -1070,89 +1071,124 @@ type LeaderCfg = {
     );
   };
 
-  const LeaderOverlay = ({
-    cfg,
-    label,
-    color = "#1d4ed8",
-    triangleColor = "#1d4ed8",
-    zIndex = 205,
-  }: {
-    cfg: LeaderCfg;
-    label: string;
-    color?: string;
-    triangleColor?: string;
-    zIndex?: number;
-  }) => {
-    const lineLen = cfg.lineHeight;
+const LeaderOverlay = ({
+  cfg,
+  label,
+  color = "#1d4ed8",
+  triangleColor = "#1d4ed8",
+  zIndex = 205,
+  fromTop = false,
+}: {
+  cfg: LeaderCfg;
+  label: string;
+  color?: string;
+  triangleColor?: string;
+  zIndex?: number;
+  fromTop?: boolean;
+}) => {
+  const lineLen = cfg.lineHeight;
 
-    return (
+  // ✅ measure box height so we can compensate when it grows
+  const boxRef = React.useRef<HTMLDivElement | null>(null);
+  const [boxH, setBoxH] = React.useState(0);
+
+  React.useLayoutEffect(() => {
+    if (!boxRef.current) return;
+
+    const el = boxRef.current;
+
+    const update = () => setBoxH(el.getBoundingClientRect().height);
+    update();
+
+    const ro = new ResizeObserver(() => update());
+    ro.observe(el);
+
+    return () => ro.disconnect();
+  }, [label, cfg.textWidth]);
+
+  // ✅ only needed for fromTop leaders
+  const baseH = cfg.baseBoxHeight ?? 34; // tweak if needed (34–40 usually good)
+  const growDelta = fromTop ? Math.max(0, boxH - baseH) : 0;
+
+  return (
+    <div
+      className="absolute pointer-events-none"
+      style={{
+        left: cfg.left,
+        bottom: cfg.bottom,
+        zIndex,
+
+        // ✅ cancels the “grows upward” behavior so arrow doesn’t drift
+        transform: fromTop ? `translateY(${growDelta}px)` : undefined,
+      }}
+    >
+      {/* ✅ LABEL BOX (does NOT rotate unless textRotate is set) */}
       <div
-        className="absolute pointer-events-none"
+        ref={boxRef}
+        className="text-black"
         style={{
-          left: cfg.left,
-          bottom: cfg.bottom,
-          zIndex,
+          width: `${cfg.textWidth ?? 260}px`,
+          fontSize: "15px",
+          fontWeight: "bold",
+          background: "white",
+          padding: "2px 6px",
+          textAlign: "center",
+          whiteSpace: "pre-line",
+          border: `2px solid ${color}`,
+          position: "relative",
+          transform: `rotate(${cfg.textRotate ?? 0}deg)`,
+          transformOrigin: "center",
         }}
       >
-        {/* ✅ LABEL BOX is the anchor reference */}
+        {label}
+
+        {/* ✅ ARROW GROUP */}
         <div
-          className="text-black"
           style={{
-            width: `${cfg.textWidth ?? 260}px`,
-            fontSize: "15px",
-            fontWeight: "bold",
-            background: "white",
-            padding: "2px 6px",
-            textAlign: "center",
-            whiteSpace: "pre-line",
-            border: `2px solid ${color}`,
-            position: "relative", // IMPORTANT: arrow anchors to this box
-            transform: `rotate(${cfg.textRotate ?? 0}deg)`,
-            transformOrigin: "center",
+            position: "absolute",
+            left: "50%",
+            top: fromTop ? undefined : "100%",
+            bottom: fromTop ? "100%" : undefined,
+
+            // ✅ arrow rotates; fromTop flips the arrow upward
+            transform: `translateX(-50%) rotate(${cfg.rotate}deg)${
+              fromTop ? " scaleY(-1)" : ""
+            }`,
+            transformOrigin: fromTop ? "bottom center" : "top center",
+            width: 0,
+            height: 0,
           }}
         >
-          {label}
+          {/* line */}
+          <div
+            style={{
+              height: `${lineLen}px`,
+              borderLeft: `2px solid ${color}`,
+              marginLeft: "-1px",
+            }}
+          />
 
-          {/* ✅ ARROW GROUP rotates around bottom-center of the box */}
+          {/* triangle */}
           <div
             style={{
               position: "absolute",
               left: "50%",
-              top: "100%", // bottom edge of box
-              transform: `translateX(-50%) rotate(${cfg.rotate}deg)`,
-              transformOrigin: "top center", // <-- bottom-center of box
+              transform: "translateX(-50%)",
               width: 0,
               height: 0,
+              borderLeft: "10px solid transparent",
+              borderRight: "10px solid transparent",
+              top: `${lineLen}px`,
+              borderTop: `18px solid ${triangleColor}`,
             }}
-          >
-            {/* line */}
-            <div
-              style={{
-                height: `${lineLen}px`,
-                borderLeft: `2px solid ${color}`,
-                marginLeft: "-1px",
-              }}
-            />
-
-            {/* triangle at the end of the line */}
-            <div
-              style={{
-                position: "absolute",
-                left: "50%",
-                top: `${lineLen}px`,
-                transform: "translateX(-50%)",
-                width: 0,
-                height: 0,
-                borderLeft: "10px solid transparent",
-                borderRight: "10px solid transparent",
-                borderTop: `18px solid ${triangleColor}`,
-              }}
-            />
-          </div>
+          />
         </div>
       </div>
-    );
-  };
+    </div>
+  );
+};
+
+
 
 
   return (
@@ -1188,7 +1224,11 @@ type LeaderCfg = {
             No drawing available for this configuration.
           </div>
         ) : (
-          <div className="relative w-[950px]">
+          <div
+            className="relative w-[950px]"
+            style={{ transform: "translateY(-60px)" }} // <-- tweak this number ------------------------------------------------------------------------------------------------------------------------------------------
+          >
+
             {/* Static drawing */}
             <LayoutSVG className="block w-full h-auto" />
 
@@ -1411,62 +1451,18 @@ type LeaderCfg = {
                   {immersionText}
                 </div>
 
-                {/* ==============================
-                        TEMP SENSOR OPTION (HL)
-                        Yellow bar + leader text
-                    ============================== */}
-                    {showHL && (
-                      <div
-                        className="absolute pointer-events-none"
-                        style={{
-                          left: overlayCfg.hlLeader.left,
-                          bottom: overlayCfg.hlLeader.bottom,
-                          transform: `rotate(${overlayCfg.hlLeader.rotate}deg)`,
-                          zIndex: 96,
-                        }}
-                      >
-                        {/* ✅ Adjustable High-Limit leader (RED) */}
-                        {showHL && overlayCfg?.hlLeader && (
-                          <LeaderOverlay
-                            cfg={overlayCfg.hlLeader}
-                            label={highLimitLabel}
-                            color="#dc2626"        // red
-                            triangleColor="#dc2626"
-                            zIndex={207}
-                          />
-                        )}
+                {/* ✅ Adjustable High-Limit leader (RED) */}
+                {showHL && overlayCfg?.hlLeader && (
+                  <LeaderOverlay
+                    cfg={overlayCfg.hlLeader}
+                    label={highLimitLabel}
+                    color="#dc2626"
+                    triangleColor="#dc2626"
+                    zIndex={207}
+                    fromTop={true} // ✅ arrow from TOP, only arrow rotates
+                  />
+                )}
 
-                        {/* triangle */}
-                        {/* <div className="w-0 h-0 border-l-[10px] border-r-[10px] border-b-[18px] border-l-transparent border-r-transparent border-b-black" /> */}
-
-                        {/* leader line */}
-                        <div
-                          // style={{
-                          //   height: overlayCfg.hlLeader.lineHeight,
-                          //   borderLeft: "2px solid black",
-                          //   marginLeft: "9px",
-                          // }}
-                        />
-
-                        {/* label */}
-                        <div
-                          // className="text-black"
-                          // style={{
-                          //   marginLeft: "-85px",
-                          //   marginTop: overlayCfg.hlLeader.textOffsetY,
-                          //   width: "220px",
-                          //   transform: "rotate(-10deg)",
-                          //   fontSize: "15px",
-                          //   background: "white",
-                          //   padding: "2px 6px",
-                          //   fontWeight: "bold",
-                          // }}
-                        >
-                          {/* {hlSensor === "HLTC" && <>High-Limit Thermocouple</>}
-                          {hlSensor === "HLTS" && <>High-Limit Thermostat</>} */}
-                        </div>
-                      </div>
-                    )}
 
                     {/* ==============================
                         ✅ NEW LEADER: Elements + Material

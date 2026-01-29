@@ -170,7 +170,7 @@ function App() {
           <input
             type="text"
             id="immersLength"
-            defaultValue={10}
+            defaultValue={25}
             onChange={(e) => setImmersionLength(Number(e.target.value) || 0)}
             className="input input-bordered border-cyan-500 border-2 input-xs max-w-xs text-gray-700 dark:text-gray-300"
           />
