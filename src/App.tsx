@@ -266,6 +266,7 @@ function App() {
           >
             <option>304SS</option>
             <option>310SS</option>
+            <option>316SS</option>
             <option>Incoloy 800/840</option>
             <option>Inconel 600</option>
             <option>Titanium</option>
