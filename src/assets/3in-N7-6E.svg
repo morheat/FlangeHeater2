@@ -169,9 +169,9 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="0.50909955"
-     inkscape:cx="1941.6635"
-     inkscape:cy="786.68307"
+     inkscape:zoom="1.0181991"
+     inkscape:cx="3060.7963"
+     inkscape:cy="633.96246"
      inkscape:window-width="2560"
      inkscape:window-height="1377"
      inkscape:window-x="1912"
@@ -830,14 +830,12 @@
        transform="matrix(0.0565688,-0.0565688,-0.0565688,-0.0565688,872.12,1279.6933)" />
     <path
        id="path218"
-       d="m 18950,10097 h 6150"
-       style="fill:none;stroke:#000000;stroke-width:28;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-       transform="matrix(0,-0.08,-0.08,0,4160,3245.3333)" />
+       d="M 3351.7385,1607.9129 V 1357.6478"
+       style="fill:none;stroke:#000000;stroke-width:1.679;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
     <path
        id="path219"
-       d="m 18950,9977 h 6150"
-       style="fill:none;stroke:#000000;stroke-width:28;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-       transform="matrix(0,-0.08,-0.08,0,4160,3245.3333)" />
+       d="M 3362.3415,1607.9129 V 1357.6478"
+       style="fill:none;stroke:#000000;stroke-width:1.679;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
     <path
        id="path220"
        d="m 21185,4097 h 120"
@@ -990,33 +988,30 @@
        transform="matrix(0.08,0,0,-0.08,3774.52,1483.2933)" />
     <path
        id="path250"
-       d="M 25100,10097 V 9977"
-       style="fill:none;stroke:#000000;stroke-width:23.62204725;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-       transform="matrix(0,-0.08,-0.08,0,4160,3245.3333)" />
+       d="m 3352.22,1356.6367 h 9.64"
+       style="fill:none;stroke:#000000;stroke-width:1.84316;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
     <path
        id="path251"
-       d="M 18950,10097 V 9977"
-       style="fill:none;stroke:#000000;stroke-width:94.4882;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-       transform="matrix(0,-0.08,-0.08,0,4160,3245.3333)" />
+       d="m 3351.8848,1607.8133 h 10.3104"
+       style="fill:none;stroke:#000000;stroke-width:6.47939;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
     <text
        id="text251"
        xml:space="preserve"
-       transform="matrix(0.08,0,0,0.08,3499.68,1302.6933)"
-       style="stroke-width:23.62204725;stroke-dasharray:none"><tspan
+       style="font-size:0.96px;stroke-width:1.88976;stroke-dasharray:none"
+       x="3505.5728"
+       y="1329.2107"><tspan
          id="tspan251"
-         style="font-variant:normal;font-weight:normal;font-size:301.751px;font-family:Arial;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:23.62204725;stroke-dasharray:none"
-         x="0"
-         y="0">OD: 2.875&quot;</tspan></text>
+         style="font-variant:normal;font-weight:normal;font-size:24.1401px;font-family:Arial;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.88976;stroke-dasharray:none"
+         x="3505.5728"
+         y="1329.2107">OD: 2.875&quot;</tspan></text>
     <path
        id="path252"
-       d="m 23957,9763 -48,214 115,-187 z"
-       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:23.62204725;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-       transform="matrix(0,-0.08,-0.08,0,4160,3245.3333)" />
+       d="m 3384.8528,1355.2907 -17.12,3.84 14.96,-9.2 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.88976;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
     <path
        id="path253"
-       d="m 23990,9777 403,-997 v -432"
-       style="fill:none;stroke:#000000;stroke-width:23.62204725;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-       transform="matrix(0,-0.08,-0.08,0,4160,3245.3333)" />
+       d="m 3383.7328,1352.6507 79.76,-32.24 h 34.56"
+       style="fill:none;stroke:#000000;stroke-width:1.88976;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
     <path
        id="path254"
        d="m 23540,22097 h 2194"

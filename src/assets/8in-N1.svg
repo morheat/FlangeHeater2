@@ -2138,8 +2138,8 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="1.439951"
-     inkscape:cx="495.50298"
-     inkscape:cy="171.18638"
+     inkscape:cx="619.81276"
+     inkscape:cy="125.35149"
      inkscape:window-width="2560"
      inkscape:window-height="1377"
      inkscape:window-x="1912"
@@ -4762,7 +4762,7 @@
     <text
        id="text568"
        xml:space="preserve"
-       transform="matrix(0.08,0,0,0.08,832.96,366.4)"
+       transform="matrix(0.08,0,0,0.08,832.5917,371.92446)"
        clip-path="url(#clipPath569)"><tspan
          id="tspan568"
          style="font-variant:normal;font-weight:normal;font-size:84.759px;font-family:Arial;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -4772,13 +4772,13 @@
        id="path570"
        d="m 5521,3181 -17,59 35,-50 z"
        style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-       transform="matrix(0,-0.08,-0.08,0,1056,816)"
+       transform="matrix(0,-0.08,-0.08,0,1055.6317,821.52446)"
        clip-path="url(#clipPath571)" />
     <path
        id="path572"
        d="m 5530,3185 121,-249 v -122"
        style="fill:none;stroke:#000000;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-       transform="matrix(0,-0.08,-0.08,0,1056,816)"
+       transform="matrix(0,-0.08,-0.08,0,1055.6317,821.52446)"
        clip-path="url(#clipPath573)" />
     <path
        id="path574"
@@ -4898,7 +4898,7 @@
        id="path612"
        d="m 5515,3284 v -44 H 3906 v 44 h 1609"
        style="fill:none;stroke:#000000;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-       transform="matrix(0,-0.08,-0.08,0,1056,816)"
+       transform="matrix(0,-0.07650187,-0.0804257,0,1057.3886,799.4607)"
        clip-path="url(#clipPath613)" />
     <path
        id="path614"

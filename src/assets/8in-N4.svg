@@ -2109,9 +2109,9 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="1.439951"
-     inkscape:cx="501.05872"
-     inkscape:cy="117.71234"
+     inkscape:zoom="2.0363982"
+     inkscape:cx="613.58333"
+     inkscape:cy="151.49296"
      inkscape:window-width="2560"
      inkscape:window-height="1377"
      inkscape:window-x="1912"
@@ -4707,7 +4707,7 @@
     <text
        id="text561"
        xml:space="preserve"
-       transform="matrix(0.08,0,0,0.08,837.28,369.6)"
+       transform="matrix(0.08,0,0,0.08,836.97309,373.83542)"
        clip-path="url(#clipPath562)"><tspan
          id="tspan561"
          style="font-variant:normal;font-weight:normal;font-size:84.759px;font-family:Arial;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -4717,13 +4717,13 @@
        id="path563"
        d="m 5481,3127 -17,59 36,-50 z"
        style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-       transform="matrix(0,-0.08,-0.08,0,1056,816)"
+       transform="matrix(0,-0.08,-0.08,0,1055.6931,820.23542)"
        clip-path="url(#clipPath564)" />
     <path
        id="path565"
        d="m 5490,3132 121,-250 v -121"
        style="fill:none;stroke:#000000;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-       transform="matrix(0,-0.08,-0.08,0,1056,816)"
+       transform="matrix(0,-0.08,-0.08,0,1055.6931,820.23542)"
        clip-path="url(#clipPath566)" />
     <path
        id="path567"
@@ -4837,7 +4837,7 @@
        id="path603"
        d="m 5475,3230 v -44 H 3866 v 44 h 1609"
        style="fill:none;stroke:#000000;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-       transform="matrix(0,-0.08,-0.08,0,1056,816)"
+       transform="matrix(0,-0.07589342,-0.08050051,0,1057.6056,796.88162)"
        clip-path="url(#clipPath604)" />
     <path
        id="path605"
