@@ -1391,6 +1391,7 @@ const LeaderOverlay = ({
                       fontSize: "15px",
                       background: "white",
                       padding: "1px 6px",
+                      color:"Black"
                     }}
                   >
                     {coldLength}&quot;
@@ -1408,6 +1409,7 @@ const LeaderOverlay = ({
                       fontSize: "12px",
                       background: "white",
                       padding: "1px 6px",
+                      color:"Black"
                     }}
                   >
                     Cold Length
