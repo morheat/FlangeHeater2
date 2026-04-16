@@ -2,7 +2,7 @@ import React, { useMemo} from "react";
 import Header from "./headers";
 
 import Titlebox from "./assets/TITLE.svg?react";
-import LOGO from "./assets/LOGO.svg?react";
+import LOGO from "./assets/NewLOGO.png";
 
 // Your ONE static full drawing SVG (10-inch config)
 import Layout10 from "./assets/10in-N14.svg?react";
@@ -1210,7 +1210,11 @@ const LeaderOverlay = ({
 
       <div className="absolute w-[950px] flex items-center justify-center">
         <Titlebox className="absolute" />
-        <LOGO className="absolute w-[16rem] ml-[650px] mt-[460px]" />
+        <img
+          src={LOGO}
+          alt="Logo"
+          className="absolute w-[13rem] ml-[650px] mt-[460px]"
+        />
       </div>
 
       <div
